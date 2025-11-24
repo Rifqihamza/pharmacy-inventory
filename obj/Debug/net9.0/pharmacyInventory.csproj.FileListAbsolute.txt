@@ -1,0 +1,14 @@
+C:\Users\User\Documents\CodersFile\Programming\pharmacyInventory\bin\Debug\net9.0\pharmacyInventory.exe
+C:\Users\User\Documents\CodersFile\Programming\pharmacyInventory\bin\Debug\net9.0\pharmacyInventory.deps.json
+C:\Users\User\Documents\CodersFile\Programming\pharmacyInventory\bin\Debug\net9.0\pharmacyInventory.runtimeconfig.json
+C:\Users\User\Documents\CodersFile\Programming\pharmacyInventory\bin\Debug\net9.0\pharmacyInventory.dll
+C:\Users\User\Documents\CodersFile\Programming\pharmacyInventory\bin\Debug\net9.0\pharmacyInventory.pdb
+C:\Users\User\Documents\CodersFile\Programming\pharmacyInventory\obj\Debug\net9.0\pharmacyInventory.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Documents\CodersFile\Programming\pharmacyInventory\obj\Debug\net9.0\pharmacyInventory.AssemblyInfoInputs.cache
+C:\Users\User\Documents\CodersFile\Programming\pharmacyInventory\obj\Debug\net9.0\pharmacyInventory.AssemblyInfo.cs
+C:\Users\User\Documents\CodersFile\Programming\pharmacyInventory\obj\Debug\net9.0\pharmacyInventory.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\CodersFile\Programming\pharmacyInventory\obj\Debug\net9.0\pharmacyInventory.dll
+C:\Users\User\Documents\CodersFile\Programming\pharmacyInventory\obj\Debug\net9.0\refint\pharmacyInventory.dll
+C:\Users\User\Documents\CodersFile\Programming\pharmacyInventory\obj\Debug\net9.0\pharmacyInventory.pdb
+C:\Users\User\Documents\CodersFile\Programming\pharmacyInventory\obj\Debug\net9.0\pharmacyInventory.genruntimeconfig.cache
+C:\Users\User\Documents\CodersFile\Programming\pharmacyInventory\obj\Debug\net9.0\ref\pharmacyInventory.dll

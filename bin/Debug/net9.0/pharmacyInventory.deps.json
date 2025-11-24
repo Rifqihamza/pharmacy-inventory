@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "pharmacyInventory/1.0.0": {
+        "runtime": {
+          "pharmacyInventory.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "pharmacyInventory/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
