@@ -1,6 +1,4 @@
-﻿using System;
-using System.Buffers.Binary;
-using pharmacyInventory.Controllers;
+﻿using pharmacyInventory.Controllers;
 using pharmacyInventory.Service;
 
 namespace pharmacyInventory

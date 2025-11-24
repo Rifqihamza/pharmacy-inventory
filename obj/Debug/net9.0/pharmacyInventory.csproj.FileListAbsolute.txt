@@ -12,3 +12,4 @@ C:\Users\User\Documents\CodersFile\Programming\pharmacyInventory\obj\Debug\net9.
 C:\Users\User\Documents\CodersFile\Programming\pharmacyInventory\obj\Debug\net9.0\pharmacyInventory.pdb
 C:\Users\User\Documents\CodersFile\Programming\pharmacyInventory\obj\Debug\net9.0\pharmacyInventory.genruntimeconfig.cache
 C:\Users\User\Documents\CodersFile\Programming\pharmacyInventory\obj\Debug\net9.0\ref\pharmacyInventory.dll
+C:\Users\User\Documents\CodersFile\Programming\pharmacyInventory\obj\Debug\net9.0\pharmacyInventory.sourcelink.json
