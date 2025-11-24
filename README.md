@@ -11,7 +11,6 @@ menambah, melihat, mengubah, dan menghapus obat.
 - Menampilkan daftar obat
 - Mengupdate informasi obat
 - Menghapus obat dari inventory
-- Penyimpanan data berbasis JSON (local file)
 
 ## 🧱 Struktur Folder
 
@@ -20,8 +19,6 @@ menambah, melihat, mengubah, dan menghapus obat.
     /Models
         Product.cs
         ProductModels.cs
-    /Data
-        products.json
     Program.cs
 
 ### Penjelasan Struktur
@@ -65,7 +62,9 @@ menambah, melihat, mengubah, dan menghapus obat.
     2. Lihat Obat
     3. Update Obat
     4. Hapus Obat
-    5. Keluar
+    5. Cari Obat (On Progress)
+    6. Filter Obat (On Progress)
+    7. Keluar
 
 ## 📝 Catatan Pengembangan
 
