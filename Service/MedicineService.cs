@@ -79,5 +79,25 @@ namespace pharmacyInventory.Service
                 return false;
             }
         }
+
+        /* ===== Search Medicine ===== */
+        public List<MedicineModels> SearchMedicine(string keyword)
+        {
+            keyword = keyword.ToLower();
+
+            return MedicineList
+                .Where(medicine => medicine.NameMedicine.ToLower().Contains(keyword))
+                .ToList();
+        }
+
+        /* ===== Filter Medicine ===== */
+        public List<MedicineModels> FilterMedicine(string category)
+        {
+            return MedicineList
+                .Where(medicine =>
+                    medicine.CatMedicine.Equals(category, StringComparison.OrdinalIgnoreCase)
+                )
+                .ToList();
+        }
     }
 }

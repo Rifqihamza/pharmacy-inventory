@@ -20,10 +20,13 @@ namespace pharmacyInventory
                 Console.WriteLine("2. Lihat Obat");
                 Console.WriteLine("3. Update Obat");
                 Console.WriteLine("4. Delete Obat");
-                Console.WriteLine("5. Keluar");
-                Console.WriteLine("================================");
-
+                Console.WriteLine("5. Cari Obat");
+                Console.WriteLine("6. Filter Obat");
+                Console.WriteLine("7. Keluar");
+                Console.WriteLine("--------------------------------");
+                Console.Write("Pilih Menu (1/2/3/4/5/6/7): ");
                 string inputChoose = Console.ReadLine() ?? "";
+                Console.WriteLine("================================");
 
                 switch (inputChoose)
                 {
@@ -40,6 +43,12 @@ namespace pharmacyInventory
                         MedicineControllers.DeleteMedicineCode(medicineService);
                         break;
                     case "5":
+                        MedicineControllers.SearchMedicineCode(medicineService);
+                        break;
+                    case "6":
+                        MedicineControllers.FilterMedicineCode(medicineService);
+                        break;
+                    case "7":
                         return;
                     default:
                         Console.WriteLine("Pilihan tidak valid!");
