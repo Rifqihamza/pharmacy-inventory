@@ -12,21 +12,24 @@ namespace pharmacyInventory
 
             while (systemRunning)
             {
-                Console.WriteLine("================================");
-                Console.WriteLine("===== Welcome To Di Sistem =====");
-                Console.WriteLine("====== Pharmacy Inventory ======");
-                Console.WriteLine("================================");
-                Console.WriteLine("1. Tambah Obat");
-                Console.WriteLine("2. Lihat Obat");
-                Console.WriteLine("3. Update Obat");
-                Console.WriteLine("4. Delete Obat");
-                Console.WriteLine("5. Cari Obat");
-                Console.WriteLine("6. Filter Obat");
-                Console.WriteLine("7. Keluar");
+                Console.Clear();
+                Console.WriteLine("==============================================");
+                Console.WriteLine("========== Selamat Datang di Sistem ==========");
+                Console.WriteLine("============= Pharmacy Inventory =============");
+                Console.WriteLine("==============================================");
+                Console.WriteLine();
                 Console.WriteLine("--------------------------------");
+                Console.WriteLine("1. Tambah Data Obat");
+                Console.WriteLine("2. Lihat Data Obat");
+                Console.WriteLine("3. Update Data Obat");
+                Console.WriteLine("4. Delete Data Obat");
+                Console.WriteLine("5. Cari Data Obat");
+                Console.WriteLine("6. Filter Data Obat");
+                Console.WriteLine("7. Akhiri Sistem");
+                Console.WriteLine("--------------------------------");
+                Console.WriteLine();
                 Console.Write("Pilih Menu (1/2/3/4/5/6/7): ");
                 string inputChoose = Console.ReadLine() ?? "";
-                Console.WriteLine("================================");
 
                 switch (inputChoose)
                 {
@@ -46,12 +49,14 @@ namespace pharmacyInventory
                         MedicineControllers.SearchMedicineCode(medicineService);
                         break;
                     case "6":
-                        MedicineControllers.FilterMedicineCode(medicineService);
+                        MedicineControllers.FilterByCategory(medicineService);
                         break;
                     case "7":
                         return;
                     default:
-                        Console.WriteLine("Pilihan tidak valid!");
+                        Console.WriteLine("==========================================");
+                        Console.WriteLine("========== Pilihan tidak valid! ==========");
+                        Console.WriteLine("==========================================");
                         break;
                 }
             }
