@@ -14,7 +14,7 @@ namespace pharmacyInventory.Service
         }
 
         /* ===== Create Medicine ===== */
-        public void AddMedicine(
+        public bool CreateMedicine(
             string nameMedic,
             string descMedic,
             string catMedic,
@@ -22,6 +22,37 @@ namespace pharmacyInventory.Service
             int stockMedic
         )
         {
+
+            if (nameMedic == "" || nameMedic.Length < 2)
+            {
+                Console.WriteLine("Nama obat harus lebih dari 1 karakter");
+                return false;
+            }
+
+            if (descMedic == "" || descMedic.Length < 2)
+            {
+                Console.WriteLine("Deskripsi obat harus lebih dari 2 karakter");
+                return false;
+            }
+
+            if (catMedic == "" || catMedic.Length < 2)
+            {
+                Console.WriteLine("Kategori obat harus lebih dari 2 karakter");
+                return false;
+            }
+
+            if (priceMedic == 0)
+            {
+                Console.WriteLine("Harga obat harus lebih dari 0");
+                return false;
+            }
+
+            if (stockMedic == 0)
+            {
+                Console.WriteLine("Stok obat harus lebih dari 0");
+                return false;
+            }
+
             MedicineModels medic = new()
             {
                 IdMedicine = AddIdMedicine++,
@@ -32,34 +63,12 @@ namespace pharmacyInventory.Service
                 StockMedicine = stockMedic,
             };
 
-            if (stockMedic <= 0)
-            {
-                throw new Exception("Stock harus lebih dari 0");
-            }
-            else if (priceMedic <= 0)
-            {
-                throw new Exception("Harga harus lebih dari 0");
-            }
-            else if (descMedic.Length < 5)
-            {
-                throw new Exception("Deskripsi harus lebih dari 10 karakter");
-            }
-            else if (nameMedic.Length < 5)
-            {
-                throw new Exception("Nama obat harus lebih dari 5 karakter");
-            }
-            else if (catMedic.Length < 5)
-            {
-                throw new Exception("Kategori obat harus lebih dari 5 karakter");
-            }
-            else
-            {
-                MedicineList.Add(medic);
-            }
+            MedicineList.Add(medic);
+            return true;
         }
 
         /* ===== Read Medicine ===== */
-        public List<MedicineModels> GetAllMedicine()
+        public List<MedicineModels> ReadAllMedicine()
         {
             return MedicineList;
         }
@@ -88,6 +97,7 @@ namespace pharmacyInventory.Service
             {
                 return false;
             }
+
         }
 
         /* ===== Delete Medicine ===== */

@@ -7,7 +7,7 @@ namespace pharmacyInventory
     {
         public static void Main()
         {
-            MedicineService medicineService = new MedicineService();
+            MedicineService medicineService = new();
             bool systemRunning = true;
 
             while (systemRunning)
@@ -34,10 +34,10 @@ namespace pharmacyInventory
                 switch (inputChoose)
                 {
                     case "1":
-                        MedicineControllers.AddMedicineCode(medicineService);
+                        MedicineControllers.CreateMedicineCode(medicineService);
                         break;
                     case "2":
-                        MedicineControllers.ShowAllMedicineCode(medicineService);
+                        MedicineControllers.ReadAllMedicineCode(medicineService);
                         break;
                     case "3":
                         MedicineControllers.UpdateMedicineCode(medicineService);
