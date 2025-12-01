@@ -5,6 +5,7 @@ namespace pharmacyInventory.Service
     class MedicineService
     {
         private readonly List<MedicineModels> MedicineList = [];
+
         int AddIdMedicine = 1;
 
         public MedicineModels? GetById(int id)
@@ -30,7 +31,31 @@ namespace pharmacyInventory.Service
                 PriceMedicine = priceMedic,
                 StockMedicine = stockMedic,
             };
-            MedicineList.Add(medic);
+
+            if (stockMedic <= 0)
+            {
+                throw new Exception("Stock harus lebih dari 0");
+            }
+            else if (priceMedic <= 0)
+            {
+                throw new Exception("Harga harus lebih dari 0");
+            }
+            else if (descMedic.Length < 5)
+            {
+                throw new Exception("Deskripsi harus lebih dari 10 karakter");
+            }
+            else if (nameMedic.Length < 5)
+            {
+                throw new Exception("Nama obat harus lebih dari 5 karakter");
+            }
+            else if (catMedic.Length < 5)
+            {
+                throw new Exception("Kategori obat harus lebih dari 5 karakter");
+            }
+            else
+            {
+                MedicineList.Add(medic);
+            }
         }
 
         /* ===== Read Medicine ===== */
