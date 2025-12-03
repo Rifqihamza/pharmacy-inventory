@@ -9,9 +9,9 @@ namespace pharmacyInventory.Controllers
         public static void HeaderMessage(string title)
         {
             Console.Clear();
-            Console.WriteLine("==============================");
+            Console.WriteLine("===============================");
             Console.WriteLine($"------ {title} ------");
-            Console.WriteLine("==============================");
+            Console.WriteLine("===============================");
         }
 
         // Sistem Pause atau Jeda sebelum lanjut
@@ -207,13 +207,13 @@ namespace pharmacyInventory.Controllers
                 medicine.StockMedicine = s;
 
             bool success = medicineService.UpdateMedicine(
-                 id,
-                 medicine.NameMedicine,
-                 medicine.DescMedicine,
-                 medicine.CatMedicine,
-                 medicine.PriceMedicine,
-                 medicine.StockMedicine
-             );
+                    id,
+                    medicine.NameMedicine,
+                    medicine.DescMedicine,
+                    medicine.CatMedicine,
+                    medicine.PriceMedicine,
+                    medicine.StockMedicine
+                );
 
             if (!success)
             {
@@ -226,9 +226,9 @@ namespace pharmacyInventory.Controllers
             }
 
             Console.Clear();
-            Console.WriteLine("========================================");
-            Console.WriteLine("==== Data obat berhasil diperbarui! ====");
-            Console.WriteLine("========================================");
+            Console.WriteLine("==========================================");
+            Console.WriteLine("===== Data obat berhasil diperbarui! =====");
+            Console.WriteLine("==========================================");
             Console.WriteLine();
             Console.WriteLine($" ID Obat        : {medicine.IdMedicine}");
             Console.WriteLine($" Nama Obat      : {medicine.NameMedicine}");
@@ -236,7 +236,7 @@ namespace pharmacyInventory.Controllers
             Console.WriteLine($" Kategori Obat  : {medicine.CatMedicine}");
             Console.WriteLine($" Harga Obat     : {medicine.PriceMedicine}");
             Console.WriteLine($" Stok Obat      : {medicine.StockMedicine}");
-            Console.WriteLine("=========================================");
+            Console.WriteLine("==========================================");
             PauseSystem();
         }
 
@@ -353,7 +353,11 @@ namespace pharmacyInventory.Controllers
 
             if (results.Count == 0)
             {
-                Console.WriteLine("Tidak ada obat dalam kategori tersebut.");
+                Console.WriteLine();
+                Console.WriteLine("====================================================");
+                Console.WriteLine("====== Tidak ada obat dalam kategori tersebut ======");
+                Console.WriteLine("====================================================");
+                Console.WriteLine();
             }
             else
             {
@@ -369,7 +373,6 @@ namespace pharmacyInventory.Controllers
                     Console.WriteLine("=========================================");
                 }
             }
-
             PauseSystem();
         }
     }

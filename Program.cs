@@ -1,4 +1,16 @@
-﻿using pharmacyInventory.Controllers;
+﻿/* ========================================
+
+    Kelas: SI-25-0
+    Kelompok: 02
+    Anggota Kelompok: 
+    1. YUKA INTAN SAHARA
+    2. RASYAFANI RAMADHINE
+    3. MUHAMMAD NABIL RAMADHAN
+    4. MUHAMMAD RIFQI HAMZA
+
+======================================== */
+
+using pharmacyInventory.Controllers;
 using pharmacyInventory.Service;
 
 namespace pharmacyInventory
@@ -18,18 +30,18 @@ namespace pharmacyInventory
                 Console.WriteLine("============= Pharmacy Inventory =============");
                 Console.WriteLine("==============================================");
                 Console.WriteLine();
-                Console.WriteLine("--------------------------------");
-                Console.WriteLine("1. Tambah Data Obat");
-                Console.WriteLine("2. Lihat Data Obat");
-                Console.WriteLine("3. Update Data Obat");
-                Console.WriteLine("4. Delete Data Obat");
-                Console.WriteLine("5. Cari Data Obat");
-                Console.WriteLine("6. Filter Data Obat");
-                Console.WriteLine("7. Akhiri Sistem");
-                Console.WriteLine("--------------------------------");
+                Console.WriteLine("----------------------------------------------");
+                Console.WriteLine(" 1. Tambah Data Obat");
+                Console.WriteLine(" 2. Lihat Data Obat");
+                Console.WriteLine(" 3. Update Data Obat");
+                Console.WriteLine(" 4. Delete Data Obat");
+                Console.WriteLine(" 5. Cari Data Obat");
+                Console.WriteLine(" 6. Filter Data Obat");
+                Console.WriteLine(" 7. Akhiri Sistem");
+                Console.WriteLine("----------------------------------------------");
                 Console.WriteLine();
                 Console.Write("Pilih Menu (1/2/3/4/5/6/7): ");
-                string inputChoose = Console.ReadLine() ?? "";
+                string inputChoose = Console.ReadLine() ?? "7";
 
                 switch (inputChoose)
                 {

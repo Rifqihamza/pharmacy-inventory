@@ -128,11 +128,7 @@ namespace pharmacyInventory.Service
         /* ===== Filter Medicine ===== */
         public List<MedicineModels> FilterMedicine(string category)
         {
-            return MedicineList
-                .Where(medicine =>
-                    medicine.CatMedicine.Equals(category, StringComparison.OrdinalIgnoreCase)
-                )
-                .ToList();
+            return MedicineList.Where(medicine => medicine.CatMedicine.Equals(category, StringComparison.OrdinalIgnoreCase)).ToList();
         }
     }
 }
