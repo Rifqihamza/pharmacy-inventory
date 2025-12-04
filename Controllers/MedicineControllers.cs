@@ -5,8 +5,8 @@ namespace pharmacyInventory.Controllers
 {
     class MedicineControllers
     {
-        // Tampilan Header setiap Function
-        public static void HeaderMessage(string title)
+        // Show Header Title Each Section Controller
+        public static void HeaderController(string title)
         {
             Console.Clear();
             Console.WriteLine("===============================");
@@ -14,16 +14,18 @@ namespace pharmacyInventory.Controllers
             Console.WriteLine("===============================");
         }
 
-        // Sistem Pause atau Jeda sebelum lanjut
-        public static void PauseSystem()
+        // Pause Controller Before Continue
+        public static void PauseController()
         {
-            Console.WriteLine("\nPress any key to continue...");
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine("Press any key to continue....");
+            Console.WriteLine("-----------------------------");
             Console.ReadKey();
             Console.Clear();
         }
 
-        // Sub Menu pada setiap function untuk Lanjut atau Kembali
-        private static int SubMenuOption(string message)
+        // Sub Menu Back or Continue for Each Section Controller
+        private static int SubMenuController(string message)
         {
             Console.WriteLine();
             Console.WriteLine($"1. {message}");
@@ -35,21 +37,31 @@ namespace pharmacyInventory.Controllers
             if (input == "1") return 1;
             if (input == "2") return 2;
 
-            Console.WriteLine("Pilihan tidak valid!");
-            PauseSystem();
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine("====================================================");
+            Console.WriteLine("=============== Pilihan Tidak Valid! ===============");
+            Console.WriteLine("====================================================");
+            Console.WriteLine();
+            PauseController();
             return 2;
         }
 
-        // Menampilkan Semua Data Obat Yang Di Panggil Setiap Function
-        private static void ShowInlineFunctionCode(MedicineService medicineService)
+        // Controller for Show All Medicine Data Inside Controller (For Update, Delete, Search, Filter)
+        // Help User Know What Data Want to Update, Delete, Search, or Filter
+        private static void ReadInlineController(MedicineService medicineService)
         {
-            HeaderMessage("Data Semua Obat");
+            HeaderController("Data Semua Obat");
 
-            var list = medicineService.ReadAllMedicine();
+            var list = medicineService.ReadService();
 
             if (list.Count == 0)
             {
-                Console.WriteLine("Tidak ada data obat.");
+                Console.WriteLine();
+                Console.WriteLine("==================================================");
+                Console.WriteLine("============== Tidak Ada Data Obat! ==============");
+                Console.WriteLine("==================================================");
+                Console.WriteLine();
             }
             else
             {
@@ -57,12 +69,14 @@ namespace pharmacyInventory.Controllers
                 {
                     Console.WriteLine();
                     Console.WriteLine("=========================================");
+                    Console.WriteLine();
                     Console.WriteLine($" ID Obat        : {m.IdMedicine}");
                     Console.WriteLine($" Nama Obat      : {m.NameMedicine}");
                     Console.WriteLine($" Deskripsi Obat : {m.DescMedicine}");
                     Console.WriteLine($" Kategori Obat  : {m.CatMedicine}");
                     Console.WriteLine($" Harga Obat     : {m.PriceMedicine}");
                     Console.WriteLine($" Stok Obat      : {m.StockMedicine}");
+                    Console.WriteLine();
                     Console.WriteLine("=========================================");
                 }
             }
@@ -70,19 +84,37 @@ namespace pharmacyInventory.Controllers
             Console.WriteLine();
         }
 
-        // Membaca Semua Data Dan Menampilkan Semua Data Obat
-        public static void ReadAllMedicineCode(MedicineService medicineService)
+        // Controller for Read and Show All Medicine Data
+        public static void ReadController(MedicineService medicineService)
         {
-            HeaderMessage("Data Semua Obat");
-
-            var list = medicineService.ReadAllMedicine();
-
-            if (list.Count == 0)
+            HeaderController("Lihat Data Semua Obat");
+            if (SubMenuController("Lihat Data Semua Obat") == 2)
             {
-                Console.WriteLine("Tidak ada data obat.");
+                return;
             }
             else
             {
+                Console.Clear();
+            }
+
+            Console.WriteLine();
+
+            var list = medicineService.ReadService();
+
+            if (list.Count == 0)
+            {
+                Console.WriteLine();
+                Console.WriteLine("==========================================");
+                Console.WriteLine("========== Tidak Ada Data Obat! ==========");
+                Console.WriteLine("==========================================");
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("=========================================");
+                Console.WriteLine("===== Data Semua Obat di Inventory! =====");
+                Console.WriteLine("=========================================");
                 foreach (var m in list)
                 {
                     Console.WriteLine();
@@ -97,16 +129,22 @@ namespace pharmacyInventory.Controllers
                 }
             }
 
-            PauseSystem();
+            PauseController();
         }
 
-        // Function Tambah Data Obat
-        public static void CreateMedicineCode(MedicineService medicineService)
+        // Controller Create New Medicine Data
+        public static void CreateController(MedicineService medicineService)
         {
-            HeaderMessage("Tambah Data Obat");
+            HeaderController("Tambah Data Obat");
 
-            if (SubMenuOption("Tambah Data Obat") == 2)
+            if (SubMenuController("Tambah Data Obat") == 2)
+            {
                 return;
+            }
+            else
+            {
+                Console.Clear();
+            }
 
             Console.Write("Nama Obat     : ");
             string name = Console.ReadLine() ?? "";
@@ -116,13 +154,27 @@ namespace pharmacyInventory.Controllers
 
             Console.Write("Kategori (OB/OBT/OK/PS/NA): ");
             string cat = Console.ReadLine() ?? "";
+            if (cat == "")
+            {
+                Console.WriteLine();
+                Console.WriteLine("===================================================");
+                Console.WriteLine("============ Stock Tidak Boleh Kosong! ============");
+                Console.WriteLine("===================================================");
+                Console.WriteLine();
+                PauseController();
+                return;
+            }
 
             Console.Write("Harga         : ");
             string priceInput = Console.ReadLine() ?? "";
             if (priceInput == "")
             {
-                Console.WriteLine("Harga tidak boleh kosong!");
-                PauseSystem();
+                Console.WriteLine();
+                Console.WriteLine("===================================================");
+                Console.WriteLine("============ Harga Tidak Boleh Kosong! ============");
+                Console.WriteLine("===================================================");
+                Console.WriteLine();
+                PauseController();
                 return;
             }
             int price = int.Parse(priceInput);
@@ -131,13 +183,17 @@ namespace pharmacyInventory.Controllers
             string stockInput = Console.ReadLine() ?? "";
             if (stockInput == "")
             {
-                Console.WriteLine("Stok tidak boleh kosong!");
-                PauseSystem();
+                Console.WriteLine();
+                Console.WriteLine("===================================================");
+                Console.WriteLine("============ Stock Tidak Boleh Kosong! ============");
+                Console.WriteLine("===================================================");
+                Console.WriteLine();
+                PauseController();
                 return;
             }
             int stock = int.Parse(stockInput);
 
-            medicineService.CreateMedicine(name, desc, cat, price, stock);
+            medicineService.CreateService(name, desc, cat, price, stock);
 
             Console.Clear();
             Console.WriteLine("==========================================");
@@ -149,28 +205,39 @@ namespace pharmacyInventory.Controllers
             Console.WriteLine($" Kategori Obat  : {cat}");
             Console.WriteLine($" Harga Obat     : {price}");
             Console.WriteLine($" Stok Obat      : {stock}");
+            Console.WriteLine();
             Console.WriteLine("==========================================");
 
-            PauseSystem();
+            PauseController();
         }
 
-        // Function Update Data Obat
-        public static void UpdateMedicineCode(MedicineService medicineService)
+        // Controller Update Medicine Data (Select by ID)
+        public static void UpdateController(MedicineService medicineService)
         {
-            HeaderMessage("Ubah Data Obat");
+            HeaderController("Ubah Data Obat");
 
-            if (SubMenuOption("Ubah Data Obat") == 2)
+            if (SubMenuController("Ubah Data Obat") == 2)
+            {
                 return;
+            }
+            else
+            {
+                Console.Clear();
+            }
 
-            ShowInlineFunctionCode(medicineService);
+            ReadInlineController(medicineService);
 
             Console.Write("Masukkan ID Obat yang ingin diubah: ");
             string idInput = Console.ReadLine() ?? "";
 
             if (idInput == "")
             {
-                Console.WriteLine("ID obat tidak boleh kosong!");
-                PauseSystem();
+                Console.WriteLine();
+                Console.WriteLine("===================================================");
+                Console.WriteLine("=========== ID Obat Tidak Boleh Kosong! ===========");
+                Console.WriteLine("===================================================");
+                Console.WriteLine();
+                PauseController();
                 return;
             }
 
@@ -179,8 +246,12 @@ namespace pharmacyInventory.Controllers
 
             if (medicine == null)
             {
-                Console.WriteLine("Data obat tidak ditemukan!");
-                PauseSystem();
+                Console.WriteLine();
+                Console.WriteLine("==================================================");
+                Console.WriteLine("=========== Data Obat Tidak Ditemukan! ===========");
+                Console.WriteLine("==================================================");
+                Console.WriteLine();
+                PauseController();
                 return;
             }
 
@@ -206,7 +277,7 @@ namespace pharmacyInventory.Controllers
             if (int.TryParse(stockUpdate, out int s) && s > 0)
                 medicine.StockMedicine = s;
 
-            bool success = medicineService.UpdateMedicine(
+            bool success = medicineService.UpdateService(
                     id,
                     medicine.NameMedicine,
                     medicine.DescMedicine,
@@ -221,7 +292,7 @@ namespace pharmacyInventory.Controllers
                 Console.WriteLine("=========================================");
                 Console.WriteLine("====== Data obat gagal diperbarui! ======");
                 Console.WriteLine("=========================================");
-                PauseSystem();
+                PauseController();
                 return;
             }
 
@@ -236,62 +307,85 @@ namespace pharmacyInventory.Controllers
             Console.WriteLine($" Kategori Obat  : {medicine.CatMedicine}");
             Console.WriteLine($" Harga Obat     : {medicine.PriceMedicine}");
             Console.WriteLine($" Stok Obat      : {medicine.StockMedicine}");
+            Console.WriteLine();
             Console.WriteLine("==========================================");
-            PauseSystem();
+            PauseController();
         }
 
-        // Function Hapus Data Obat
-        public static void DeleteMedicineCode(MedicineService medicineService)
+        // Controller Delete Medicine Data (Select by ID)
+        public static void DeleteController(MedicineService medicineService)
         {
-            HeaderMessage("Hapus Data Obat");
+            HeaderController("Hapus Data Obat");
 
-            if (SubMenuOption("Hapus Data Obat") == 2)
+            if (SubMenuController("Hapus Data Obat") == 2)
+            {
                 return;
+            }
+            else
+            {
+                Console.Clear();
+            }
 
-            ShowInlineFunctionCode(medicineService);
+            ReadInlineController(medicineService);
 
             Console.Write("Masukkan ID Obat yang ingin dihapus: ");
             string idInput = Console.ReadLine() ?? "";
 
             if (idInput == "")
             {
-                Console.WriteLine("ID obat tidak boleh kosong!");
-                PauseSystem();
+                Console.WriteLine();
+                Console.WriteLine("===================================================");
+                Console.WriteLine("=========== ID Obat Tidak Boleh Kosong! ===========");
+                Console.WriteLine("===================================================");
+                Console.WriteLine();
+                PauseController();
                 return;
             }
 
             int id = int.Parse(idInput);
 
-            if (medicineService.DeleteMedicine(id))
+            if (medicineService.DeleteService(id))
             {
+                Console.Clear();
+                Console.WriteLine();
                 Console.WriteLine("=========================================");
                 Console.WriteLine("====== Data obat berhasil dihapus! ======");
                 Console.WriteLine("=========================================");
+                Console.WriteLine();
             }
             else
             {
+                Console.Clear();
+                Console.WriteLine();
                 Console.WriteLine("==========================================");
                 Console.WriteLine("======= Data obat tidak ditemukan! =======");
                 Console.WriteLine("==========================================");
+                Console.WriteLine();
             }
 
-            PauseSystem();
+            PauseController();
         }
 
-        // Function Cari Data Obat by Nama
-        public static void SearchMedicineCode(MedicineService medicineService)
+        // Controller Search Medicine Data (Select by Name Medicine)
+        public static void SearchController(MedicineService medicineService)
         {
-            HeaderMessage("Cari Data Obat");
+            HeaderController("Cari Data Obat");
 
-            if (SubMenuOption("Cari Data Obat") == 2)
+            if (SubMenuController("Cari Data Obat") == 2)
+            {
                 return;
+            }
+            else
+            {
+                Console.Clear();
+            }
 
-            ShowInlineFunctionCode(medicineService);
+            ReadInlineController(medicineService);
 
             Console.Write("Masukkan Nama obat: ");
             string name = Console.ReadLine() ?? "";
 
-            var results = medicineService.SearchMedicine(name);
+            var results = medicineService.SearchService(name);
 
             Console.Clear();
 
@@ -319,23 +413,29 @@ namespace pharmacyInventory.Controllers
                 }
             }
 
-            PauseSystem();
+            PauseController();
         }
 
-        // Function Filter Data Obat by Kategori
-        public static void FilterByCategory(MedicineService medicineService)
+        // Controller Filter Medicine Data (Select by Category)
+        public static void FilterController(MedicineService medicineService)
         {
-            HeaderMessage("Filter Data Obat");
+            HeaderController("Filter Data Obat");
 
-            if (SubMenuOption("Filter Data Obat") == 2)
+            if (SubMenuController("Filter Data Obat") == 2)
+            {
                 return;
+            }
+            else
+            {
+                Console.Clear();
+            }
 
-            ShowInlineFunctionCode(medicineService);
+            ReadInlineController(medicineService);
 
             Console.Write("Masukkan kategori obat (OB/OBT/OK/PS/NA): ");
             string category = Console.ReadLine() ?? "";
 
-            var allMedicine = medicineService.ReadAllMedicine();
+            var allMedicine = medicineService.ReadService();
             List<MedicineModels> results = [];
 
             foreach (var m in allMedicine)
@@ -373,7 +473,7 @@ namespace pharmacyInventory.Controllers
                     Console.WriteLine("=========================================");
                 }
             }
-            PauseSystem();
+            PauseController();
         }
     }
 }

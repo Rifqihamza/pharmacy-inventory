@@ -4,17 +4,27 @@ namespace pharmacyInventory.Service
 {
     class MedicineService
     {
+
+        /* ===== Initiate Models Medicine Data to Array List ===== */
         private readonly List<MedicineModels> MedicineList = [];
 
+        /* ===== Initiate Type Data for Add +1 ID (Auto Increment) ===== */
         int AddIdMedicine = 1;
 
+        /* ===== Get Data by ID ===== */
         public MedicineModels? GetById(int id)
         {
             return MedicineList.FirstOrDefault(medicine => medicine.IdMedicine == id);
         }
 
-        /* ===== Create Medicine ===== */
-        public bool CreateMedicine(
+        /* ===== Read Medicine Data Service ===== */
+        public List<MedicineModels> ReadService()
+        {
+            return MedicineList;
+        }
+
+        /* ===== Create Medicine Data Service ===== */
+        public bool CreateService(
             string nameMedic,
             string descMedic,
             string catMedic,
@@ -67,14 +77,8 @@ namespace pharmacyInventory.Service
             return true;
         }
 
-        /* ===== Read Medicine ===== */
-        public List<MedicineModels> ReadAllMedicine()
-        {
-            return MedicineList;
-        }
-
-        /* ===== Update Medicine ===== */
-        public bool UpdateMedicine(
+        /* ===== Update Medicine Data Service ===== */
+        public bool UpdateService(
             int idMedic,
             string nameMedic,
             string descMedic,
@@ -100,8 +104,8 @@ namespace pharmacyInventory.Service
 
         }
 
-        /* ===== Delete Medicine ===== */
-        public bool DeleteMedicine(int id)
+        /* ===== Delete Medicine Data Service ===== */
+        public bool DeleteService(int id)
         {
             var medicine = MedicineList.FirstOrDefault(medicine => medicine.IdMedicine == id);
             if (medicine != null)
@@ -115,8 +119,8 @@ namespace pharmacyInventory.Service
             }
         }
 
-        /* ===== Search Medicine ===== */
-        public List<MedicineModels> SearchMedicine(string keyword)
+        /* ===== Search Medicine Data Service ===== */
+        public List<MedicineModels> SearchService(string keyword)
         {
             keyword = keyword.ToLower();
 
@@ -125,8 +129,8 @@ namespace pharmacyInventory.Service
                 .ToList();
         }
 
-        /* ===== Filter Medicine ===== */
-        public List<MedicineModels> FilterMedicine(string category)
+        /* ===== Filter Medicine Data Service ===== */
+        public List<MedicineModels> FilterService(string category)
         {
             return MedicineList.Where(medicine => medicine.CatMedicine.Equals(category, StringComparison.OrdinalIgnoreCase)).ToList();
         }

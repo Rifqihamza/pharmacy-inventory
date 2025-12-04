@@ -3,10 +3,10 @@
     Kelas: SI-25-0
     Kelompok: 02
     Anggota Kelompok: 
-    1. YUKA INTAN SAHARA
-    2. RASYAFANI RAMADHINE
-    3. MUHAMMAD NABIL RAMADHAN
-    4. MUHAMMAD RIFQI HAMZA
+    1. MUHAMMAD RIFQI HAMZA (102042500206)
+    2. MUHAMMAD NABIL RAMADHAN
+    4. YUKA INTAN SAHARA (102042500059)
+    3. RASYAFANI RAMADHINE
 
 ======================================== */
 
@@ -19,11 +19,16 @@ namespace pharmacyInventory
     {
         public static void Main()
         {
+            // Initiate Object from Service to Manage Data
             MedicineService medicineService = new();
+
+            // Initiate for Looping Always run
             bool systemRunning = true;
 
+            // Use Looping Avoid Crash or End System After Use Function Create Read Update Delete Until Stop the System
             while (systemRunning)
             {
+                // Show Title and Main Menu
                 Console.Clear();
                 Console.WriteLine("==============================================");
                 Console.WriteLine("========== Selamat Datang di Sistem ==========");
@@ -40,35 +45,42 @@ namespace pharmacyInventory
                 Console.WriteLine(" 7. Akhiri Sistem");
                 Console.WriteLine("----------------------------------------------");
                 Console.WriteLine();
-                Console.Write("Pilih Menu (1/2/3/4/5/6/7): ");
-                string inputChoose = Console.ReadLine() ?? "7";
 
+                // Input Option Menu
+                Console.Write("Pilih Menu (1/2/3/4/5/6/7): ");
+                string inputChoose = Console.ReadLine() ?? "";
+
+                // Switch Case for Input Option
                 switch (inputChoose)
                 {
                     case "1":
-                        MedicineControllers.CreateMedicineCode(medicineService);
+                        MedicineControllers.CreateController(medicineService);
                         break;
                     case "2":
-                        MedicineControllers.ReadAllMedicineCode(medicineService);
+                        MedicineControllers.ReadController(medicineService);
                         break;
                     case "3":
-                        MedicineControllers.UpdateMedicineCode(medicineService);
+                        MedicineControllers.UpdateController(medicineService);
                         break;
                     case "4":
-                        MedicineControllers.DeleteMedicineCode(medicineService);
+                        MedicineControllers.DeleteController(medicineService);
                         break;
                     case "5":
-                        MedicineControllers.SearchMedicineCode(medicineService);
+                        MedicineControllers.SearchController(medicineService);
                         break;
                     case "6":
-                        MedicineControllers.FilterByCategory(medicineService);
+                        MedicineControllers.FilterController(medicineService);
                         break;
                     case "7":
                         return;
                     default:
+                        Console.Clear();
                         Console.WriteLine("==========================================");
                         Console.WriteLine("========== Pilihan tidak valid! ==========");
+                        Console.WriteLine("======= Press any key to continue! =======");
                         Console.WriteLine("==========================================");
+                        Console.ReadKey();
+                        Console.Clear();
                         break;
                 }
             }
