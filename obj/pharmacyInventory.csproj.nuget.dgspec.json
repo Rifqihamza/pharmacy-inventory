@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Documents\\CodersFile\\Programming\\pharmacyInventory\\pharmacyInventory.csproj": {}
+    "C:\\Users\\ACER\\Documents\\pharmacy-inventory\\pharmacyInventory.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Documents\\CodersFile\\Programming\\pharmacyInventory\\pharmacyInventory.csproj": {
+    "C:\\Users\\ACER\\Documents\\pharmacy-inventory\\pharmacyInventory.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Documents\\CodersFile\\Programming\\pharmacyInventory\\pharmacyInventory.csproj",
+        "projectUniqueName": "C:\\Users\\ACER\\Documents\\pharmacy-inventory\\pharmacyInventory.csproj",
         "projectName": "pharmacyInventory",
-        "projectPath": "C:\\Users\\User\\Documents\\CodersFile\\Programming\\pharmacyInventory\\pharmacyInventory.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Documents\\CodersFile\\Programming\\pharmacyInventory\\obj\\",
+        "projectPath": "C:\\Users\\ACER\\Documents\\pharmacy-inventory\\pharmacyInventory.csproj",
+        "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ACER\\Documents\\pharmacy-inventory\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
