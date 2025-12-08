@@ -9,12 +9,12 @@ namespace pharmacyInventory.Service
         private readonly List<MedicineModels> MedicineList = [];
 
         /* ===== Initiate Type Data for Add +1 ID (Auto Increment) ===== */
-        int AddIdMedicine = 1;
+        int AddIdMedicine_0502 = 1;
 
         /* ===== Get Data by ID ===== */
         public MedicineModels? GetById(int id)
         {
-            return MedicineList.FirstOrDefault(medicine => medicine.IdMedicine == id);
+            return MedicineList.FirstOrDefault(medicine => medicine.IdMedicine_0502 == id);
         }
 
         /* ===== Read Medicine Data Service ===== */
@@ -33,48 +33,28 @@ namespace pharmacyInventory.Service
         )
         {
 
-            if (nameMedic == "" || nameMedic.Length < 2)
+            MedicineModels medic_0502 = new()
             {
-                Console.WriteLine("Nama obat harus lebih dari 1 karakter");
-                return false;
-            }
-
-            if (descMedic == "" || descMedic.Length < 2)
-            {
-                Console.WriteLine("Deskripsi obat harus lebih dari 2 karakter");
-                return false;
-            }
-
-            if (catMedic == "" || catMedic.Length < 2)
-            {
-                Console.WriteLine("Kategori obat harus lebih dari 2 karakter");
-                return false;
-            }
-
-            if (priceMedic == 0)
-            {
-                Console.WriteLine("Harga obat harus lebih dari 0");
-                return false;
-            }
-
-            if (stockMedic == 0)
-            {
-                Console.WriteLine("Stok obat harus lebih dari 0");
-                return false;
-            }
-
-            MedicineModels medic = new()
-            {
-                IdMedicine = AddIdMedicine++,
-                NameMedicine = nameMedic,
-                DescMedicine = descMedic,
-                CatMedicine = catMedic,
-                PriceMedicine = priceMedic,
-                StockMedicine = stockMedic,
+                IdMedicine_0502 = AddIdMedicine_0502++,
+                NameMedicine_0502 = nameMedic,
+                DescMedicine_0502 = descMedic,
+                CatMedicine_0502 = catMedic,
+                PriceMedicine_0502 = priceMedic,
+                StockMedicine_0502 = stockMedic,
             };
 
-            MedicineList.Add(medic);
-            return true;
+            // MedicineList.Add(medic_0502);
+            // return true;
+
+            try
+            {
+                MedicineList.Add(medic_0502);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         /* ===== Update Medicine Data Service ===== */
@@ -87,14 +67,14 @@ namespace pharmacyInventory.Service
             int stockMedic
         )
         {
-            var medicine = MedicineList.FirstOrDefault(medicine => medicine.IdMedicine == idMedic);
-            if (medicine != null)
+            var medicine_0502 = MedicineList.FirstOrDefault(medicine => medicine.IdMedicine_0502 == idMedic);
+            if (medicine_0502 != null)
             {
-                medicine.NameMedicine = nameMedic;
-                medicine.DescMedicine = descMedic;
-                medicine.CatMedicine = catMedic;
-                medicine.PriceMedicine = priceMedic;
-                medicine.StockMedicine = stockMedic;
+                medicine_0502.NameMedicine_0502 = nameMedic;
+                medicine_0502.DescMedicine_0502 = descMedic;
+                medicine_0502.CatMedicine_0502 = catMedic;
+                medicine_0502.PriceMedicine_0502 = priceMedic;
+                medicine_0502.StockMedicine_0502 = stockMedic;
                 return true;
             }
             else
@@ -107,10 +87,10 @@ namespace pharmacyInventory.Service
         /* ===== Delete Medicine Data Service ===== */
         public bool DeleteService(int id)
         {
-            var medicine = MedicineList.FirstOrDefault(medicine => medicine.IdMedicine == id);
-            if (medicine != null)
+            var medicine_0502 = MedicineList.FirstOrDefault(medicine => medicine.IdMedicine_0502 == id);
+            if (medicine_0502 != null)
             {
-                MedicineList.Remove(medicine);
+                MedicineList.Remove(medicine_0502);
                 return true;
             }
             else
@@ -125,14 +105,14 @@ namespace pharmacyInventory.Service
             keyword = keyword.ToLower();
 
             return MedicineList
-                .Where(medicine => medicine.NameMedicine.ToLower().Contains(keyword))
+                .Where(medicine => medicine.NameMedicine_0502.ToLower().Contains(keyword))
                 .ToList();
         }
 
         /* ===== Filter Medicine Data Service ===== */
         public List<MedicineModels> FilterService(string category)
         {
-            return MedicineList.Where(medicine => medicine.CatMedicine.Equals(category, StringComparison.OrdinalIgnoreCase)).ToList();
+            return MedicineList.Where(medicine => medicine.CatMedicine_0502.Equals(category, StringComparison.OrdinalIgnoreCase)).ToList();
         }
     }
 }

@@ -32,10 +32,10 @@ namespace pharmacyInventory.Controllers
             Console.WriteLine("2. Kembali ke Menu Utama");
             Console.Write("Pilih Menu: ");
 
-            string input = Console.ReadLine() ?? "";
+            string input_0502 = Console.ReadLine() ?? "";
 
-            if (input == "1") return 1;
-            if (input == "2") return 2;
+            if (input_0502 == "1") return 1;
+            if (input_0502 == "2") return 2;
 
             Console.Clear();
             Console.WriteLine();
@@ -53,9 +53,9 @@ namespace pharmacyInventory.Controllers
         {
             HeaderController("Data Semua Obat");
 
-            var list = medicineService.ReadService();
+            var list_0502 = medicineService.ReadService();
 
-            if (list.Count == 0)
+            if (list_0502.Count == 0)
             {
                 Console.WriteLine();
                 Console.WriteLine("==================================================");
@@ -65,17 +65,17 @@ namespace pharmacyInventory.Controllers
             }
             else
             {
-                foreach (var m in list)
+                foreach (var m in list_0502)
                 {
                     Console.WriteLine();
                     Console.WriteLine("=========================================");
                     Console.WriteLine();
-                    Console.WriteLine($" ID Obat        : {m.IdMedicine}");
-                    Console.WriteLine($" Nama Obat      : {m.NameMedicine}");
-                    Console.WriteLine($" Deskripsi Obat : {m.DescMedicine}");
-                    Console.WriteLine($" Kategori Obat  : {m.CatMedicine}");
-                    Console.WriteLine($" Harga Obat     : {m.PriceMedicine}");
-                    Console.WriteLine($" Stok Obat      : {m.StockMedicine}");
+                    Console.WriteLine($" ID Obat        : {m.IdMedicine_0502}");
+                    Console.WriteLine($" Nama Obat      : {m.NameMedicine_0502}");
+                    Console.WriteLine($" Deskripsi Obat : {m.DescMedicine_0502}");
+                    Console.WriteLine($" Kategori Obat  : {m.CatMedicine_0502}");
+                    Console.WriteLine($" Harga Obat     : {m.PriceMedicine_0502}");
+                    Console.WriteLine($" Stok Obat      : {m.StockMedicine_0502}");
                     Console.WriteLine();
                     Console.WriteLine("=========================================");
                 }
@@ -99,9 +99,9 @@ namespace pharmacyInventory.Controllers
 
             Console.WriteLine();
 
-            var list = medicineService.ReadService();
+            var list_0502 = medicineService.ReadService();
 
-            if (list.Count == 0)
+            if (list_0502.Count == 0)
             {
                 Console.WriteLine();
                 Console.WriteLine("==========================================");
@@ -115,16 +115,16 @@ namespace pharmacyInventory.Controllers
                 Console.WriteLine("=========================================");
                 Console.WriteLine("===== Data Semua Obat di Inventory! =====");
                 Console.WriteLine("=========================================");
-                foreach (var m in list)
+                foreach (var m in list_0502)
                 {
                     Console.WriteLine();
                     Console.WriteLine("=========================================");
-                    Console.WriteLine($" ID Obat        : {m.IdMedicine}");
-                    Console.WriteLine($" Nama Obat      : {m.NameMedicine}");
-                    Console.WriteLine($" Deskripsi Obat : {m.DescMedicine}");
-                    Console.WriteLine($" Kategori Obat  : {m.CatMedicine}");
-                    Console.WriteLine($" Harga Obat     : {m.PriceMedicine}");
-                    Console.WriteLine($" Stok Obat      : {m.StockMedicine}");
+                    Console.WriteLine($" ID Obat        : {m.IdMedicine_0502}");
+                    Console.WriteLine($" Nama Obat      : {m.NameMedicine_0502}");
+                    Console.WriteLine($" Deskripsi Obat : {m.DescMedicine_0502}");
+                    Console.WriteLine($" Kategori Obat  : {m.CatMedicine_0502}");
+                    Console.WriteLine($" Harga Obat     : {m.PriceMedicine_0502}");
+                    Console.WriteLine($" Stok Obat      : {m.StockMedicine_0502}");
                     Console.WriteLine("=========================================");
                 }
             }
@@ -147,14 +147,24 @@ namespace pharmacyInventory.Controllers
             }
 
             Console.Write("Nama Obat     : ");
-            string name = Console.ReadLine() ?? "";
+            string name_0502 = Console.ReadLine() ?? "";
+            if (name_0502 == "" || name_0502.Length < 1)
+            {
+                Console.WriteLine();
+                Console.WriteLine("===================================================");
+                Console.WriteLine("============ Stock Tidak Boleh Kosong! ============");
+                Console.WriteLine("===================================================");
+                Console.WriteLine();
+                PauseController();
+                return;
+            }
 
             Console.Write("Deskripsi     : ");
-            string desc = Console.ReadLine() ?? "";
+            string desc_0502 = Console.ReadLine() ?? "";
 
             Console.Write("Kategori (OB/OBT/OK/PS/NA): ");
-            string cat = Console.ReadLine() ?? "";
-            if (cat == "")
+            string cat_0502 = Console.ReadLine() ?? "";
+            if (cat_0502 == "")
             {
                 Console.WriteLine();
                 Console.WriteLine("===================================================");
@@ -166,8 +176,8 @@ namespace pharmacyInventory.Controllers
             }
 
             Console.Write("Harga         : ");
-            string priceInput = Console.ReadLine() ?? "";
-            if (priceInput == "")
+            string priceInput_0502 = Console.ReadLine() ?? "";
+            if (priceInput_0502 == "")
             {
                 Console.WriteLine();
                 Console.WriteLine("===================================================");
@@ -177,11 +187,11 @@ namespace pharmacyInventory.Controllers
                 PauseController();
                 return;
             }
-            int price = int.Parse(priceInput);
+            int price_0502 = int.Parse(priceInput_0502);
 
             Console.Write("Stok          : ");
-            string stockInput = Console.ReadLine() ?? "";
-            if (stockInput == "")
+            string stockInput_0502 = Console.ReadLine() ?? "";
+            if (stockInput_0502 == "")
             {
                 Console.WriteLine();
                 Console.WriteLine("===================================================");
@@ -191,20 +201,20 @@ namespace pharmacyInventory.Controllers
                 PauseController();
                 return;
             }
-            int stock = int.Parse(stockInput);
+            int stock_0502 = int.Parse(stockInput_0502);
 
-            medicineService.CreateService(name, desc, cat, price, stock);
+            medicineService.CreateService(name_0502, desc_0502, cat_0502, price_0502, stock_0502);
 
             Console.Clear();
             Console.WriteLine("==========================================");
             Console.WriteLine("== Data obat baru berhasil ditambahkan! ==");
             Console.WriteLine("==========================================");
             Console.WriteLine();
-            Console.WriteLine($" Nama Obat      : {name}");
-            Console.WriteLine($" Deskripsi Obat : {desc}");
-            Console.WriteLine($" Kategori Obat  : {cat}");
-            Console.WriteLine($" Harga Obat     : {price}");
-            Console.WriteLine($" Stok Obat      : {stock}");
+            Console.WriteLine($" Nama Obat      : {name_0502}");
+            Console.WriteLine($" Deskripsi Obat : {desc_0502}");
+            Console.WriteLine($" Kategori Obat  : {cat_0502}");
+            Console.WriteLine($" Harga Obat     : {price_0502}");
+            Console.WriteLine($" Stok Obat      : {stock_0502}");
             Console.WriteLine();
             Console.WriteLine("==========================================");
 
@@ -228,9 +238,9 @@ namespace pharmacyInventory.Controllers
             ReadInlineController(medicineService);
 
             Console.Write("Masukkan ID Obat yang ingin diubah: ");
-            string idInput = Console.ReadLine() ?? "";
+            string idInput_0502 = Console.ReadLine() ?? "";
 
-            if (idInput == "")
+            if (idInput_0502 == "")
             {
                 Console.WriteLine();
                 Console.WriteLine("===================================================");
@@ -241,10 +251,10 @@ namespace pharmacyInventory.Controllers
                 return;
             }
 
-            int id = int.Parse(idInput);
-            var medicine = medicineService.GetById(id);
+            int id_0502 = int.Parse(idInput_0502);
+            var medicine_0502 = medicineService.GetById(id_0502);
 
-            if (medicine == null)
+            if (medicine_0502 == null)
             {
                 Console.WriteLine();
                 Console.WriteLine("==================================================");
@@ -255,38 +265,38 @@ namespace pharmacyInventory.Controllers
                 return;
             }
 
-            Console.Write($"Nama Obat Baru ({medicine.NameMedicine}) : ");
-            string nameInput = Console.ReadLine() ?? "";
-            if (nameInput != "") medicine.NameMedicine = nameInput;
+            Console.Write($"Nama Obat Baru ({medicine_0502.NameMedicine_0502}) : ");
+            string nameInput_0502 = Console.ReadLine() ?? "";
+            if (nameInput_0502 != "") medicine_0502.NameMedicine_0502 = nameInput_0502;
 
-            Console.Write($"Deskripsi Baru ({medicine.DescMedicine}) : ");
-            string descInput = Console.ReadLine() ?? "";
-            if (descInput != "") medicine.DescMedicine = descInput;
+            Console.Write($"Deskripsi Baru ({medicine_0502.DescMedicine_0502}) : ");
+            string descInput_0502 = Console.ReadLine() ?? "";
+            if (descInput_0502 != "") medicine_0502.DescMedicine_0502 = descInput_0502;
 
-            Console.Write($"Kategori Baru ({medicine.CatMedicine}) : ");
-            string catInput = Console.ReadLine() ?? "";
-            if (catInput != "") medicine.CatMedicine = catInput;
+            Console.Write($"Kategori Baru ({medicine_0502.CatMedicine_0502}) : ");
+            string catInput_0502 = Console.ReadLine() ?? "";
+            if (catInput_0502 != "") medicine_0502.CatMedicine_0502 = catInput_0502;
 
-            Console.Write($"Harga Baru ({medicine.PriceMedicine}) : ");
-            string priceUpdate = Console.ReadLine() ?? "";
-            if (int.TryParse(priceUpdate, out int p) && p > 0)
-                medicine.PriceMedicine = p;
+            Console.Write($"Harga Baru ({medicine_0502.PriceMedicine_0502}) : ");
+            string priceUpdate_0502 = Console.ReadLine() ?? "";
+            if (int.TryParse(priceUpdate_0502, out int p) && p > 0)
+                medicine_0502.PriceMedicine_0502 = p;
 
-            Console.Write($"Stok Baru ({medicine.StockMedicine}) : ");
-            string stockUpdate = Console.ReadLine() ?? "";
-            if (int.TryParse(stockUpdate, out int s) && s > 0)
-                medicine.StockMedicine = s;
+            Console.Write($"Stok Baru ({medicine_0502.StockMedicine_0502}) : ");
+            string stockUpdate_0502 = Console.ReadLine() ?? "";
+            if (int.TryParse(stockUpdate_0502, out int s) && s > 0)
+                medicine_0502.StockMedicine_0502 = s;
 
-            bool success = medicineService.UpdateService(
-                    id,
-                    medicine.NameMedicine,
-                    medicine.DescMedicine,
-                    medicine.CatMedicine,
-                    medicine.PriceMedicine,
-                    medicine.StockMedicine
+            bool success_0502 = medicineService.UpdateService(
+                    id_0502,
+                    medicine_0502.NameMedicine_0502,
+                    medicine_0502.DescMedicine_0502,
+                    medicine_0502.CatMedicine_0502,
+                    medicine_0502.PriceMedicine_0502,
+                    medicine_0502.StockMedicine_0502
                 );
 
-            if (!success)
+            if (!success_0502)
             {
                 Console.Clear();
                 Console.WriteLine("=========================================");
@@ -301,12 +311,12 @@ namespace pharmacyInventory.Controllers
             Console.WriteLine("===== Data obat berhasil diperbarui! =====");
             Console.WriteLine("==========================================");
             Console.WriteLine();
-            Console.WriteLine($" ID Obat        : {medicine.IdMedicine}");
-            Console.WriteLine($" Nama Obat      : {medicine.NameMedicine}");
-            Console.WriteLine($" Deskripsi Obat : {medicine.DescMedicine}");
-            Console.WriteLine($" Kategori Obat  : {medicine.CatMedicine}");
-            Console.WriteLine($" Harga Obat     : {medicine.PriceMedicine}");
-            Console.WriteLine($" Stok Obat      : {medicine.StockMedicine}");
+            Console.WriteLine($" ID Obat        : {medicine_0502.IdMedicine_0502}");
+            Console.WriteLine($" Nama Obat      : {medicine_0502.NameMedicine_0502}");
+            Console.WriteLine($" Deskripsi Obat : {medicine_0502.DescMedicine_0502}");
+            Console.WriteLine($" Kategori Obat  : {medicine_0502.CatMedicine_0502}");
+            Console.WriteLine($" Harga Obat     : {medicine_0502.PriceMedicine_0502}");
+            Console.WriteLine($" Stok Obat      : {medicine_0502.StockMedicine_0502}");
             Console.WriteLine();
             Console.WriteLine("==========================================");
             PauseController();
@@ -329,9 +339,9 @@ namespace pharmacyInventory.Controllers
             ReadInlineController(medicineService);
 
             Console.Write("Masukkan ID Obat yang ingin dihapus: ");
-            string idInput = Console.ReadLine() ?? "";
+            string idInput_0502 = Console.ReadLine() ?? "";
 
-            if (idInput == "")
+            if (idInput_0502 == "")
             {
                 Console.WriteLine();
                 Console.WriteLine("===================================================");
@@ -342,9 +352,9 @@ namespace pharmacyInventory.Controllers
                 return;
             }
 
-            int id = int.Parse(idInput);
+            int id_0502 = int.Parse(idInput_0502);
 
-            if (medicineService.DeleteService(id))
+            if (medicineService.DeleteService(id_0502))
             {
                 Console.Clear();
                 Console.WriteLine();
@@ -383,13 +393,13 @@ namespace pharmacyInventory.Controllers
             ReadInlineController(medicineService);
 
             Console.Write("Masukkan Nama obat: ");
-            string name = Console.ReadLine() ?? "";
+            string name_0502 = Console.ReadLine() ?? "";
 
-            var results = medicineService.SearchService(name);
+            var results_0502 = medicineService.SearchService(name_0502);
 
             Console.Clear();
 
-            if (results.Count == 0)
+            if (results_0502.Count == 0)
             {
                 Console.WriteLine("==========================================");
                 Console.WriteLine("======= Data obat tidak ditemukan! =======");
@@ -397,18 +407,18 @@ namespace pharmacyInventory.Controllers
             }
             else
             {
-                foreach (var m in results)
+                foreach (var m_0502 in results_0502)
                 {
                     Console.WriteLine();
                     Console.WriteLine("=========================================");
                     Console.WriteLine("===== Berhasil menemukan data obat! =====");
                     Console.WriteLine("=========================================");
-                    Console.WriteLine($" ID Obat        : {m.IdMedicine}");
-                    Console.WriteLine($" Nama Obat      : {m.NameMedicine}");
-                    Console.WriteLine($" Deskripsi Obat : {m.DescMedicine}");
-                    Console.WriteLine($" Kategori Obat  : {m.CatMedicine}");
-                    Console.WriteLine($" Harga Obat     : {m.PriceMedicine}");
-                    Console.WriteLine($" Stok Obat      : {m.StockMedicine}");
+                    Console.WriteLine($" ID Obat        : {m_0502.IdMedicine_0502}");
+                    Console.WriteLine($" Nama Obat      : {m_0502.NameMedicine_0502}");
+                    Console.WriteLine($" Deskripsi Obat : {m_0502.DescMedicine_0502}");
+                    Console.WriteLine($" Kategori Obat  : {m_0502.CatMedicine_0502}");
+                    Console.WriteLine($" Harga Obat     : {m_0502.PriceMedicine_0502}");
+                    Console.WriteLine($" Stok Obat      : {m_0502.StockMedicine_0502}");
                     Console.WriteLine("=========================================");
                 }
             }
@@ -433,16 +443,16 @@ namespace pharmacyInventory.Controllers
             ReadInlineController(medicineService);
 
             Console.Write("Masukkan kategori obat (OB/OBT/OK/PS/NA): ");
-            string category = Console.ReadLine() ?? "";
+            string category_0502 = Console.ReadLine() ?? "";
 
-            var allMedicine = medicineService.ReadService();
-            List<MedicineModels> results = [];
+            var allMedicine_0502 = medicineService.ReadService();
+            List<MedicineModels> results_0502 = [];
 
-            foreach (var m in allMedicine)
+            foreach (var m_0502 in allMedicine_0502)
             {
-                if (m.CatMedicine.Equals(category, StringComparison.OrdinalIgnoreCase))
+                if (m_0502.CatMedicine_0502.Equals(category_0502, StringComparison.OrdinalIgnoreCase))
                 {
-                    results.Add(m);
+                    results_0502.Add(m_0502);
                 }
             }
 
@@ -451,7 +461,7 @@ namespace pharmacyInventory.Controllers
             Console.WriteLine("====== Hasil Filter Kategori ======");
             Console.WriteLine("===================================");
 
-            if (results.Count == 0)
+            if (results_0502.Count == 0)
             {
                 Console.WriteLine();
                 Console.WriteLine("====================================================");
@@ -461,15 +471,15 @@ namespace pharmacyInventory.Controllers
             }
             else
             {
-                foreach (var m in results)
+                foreach (var m_0502 in results_0502)
                 {
                     Console.WriteLine();
-                    Console.WriteLine($" ID Obat        : {m.IdMedicine}");
-                    Console.WriteLine($" Nama Obat      : {m.NameMedicine}");
-                    Console.WriteLine($" Deskripsi Obat : {m.DescMedicine}");
-                    Console.WriteLine($" Kategori Obat  : {m.CatMedicine}");
-                    Console.WriteLine($" Harga Obat     : {m.PriceMedicine}");
-                    Console.WriteLine($" Stok Obat      : {m.StockMedicine}");
+                    Console.WriteLine($" ID Obat        : {m_0502.IdMedicine_0502}");
+                    Console.WriteLine($" Nama Obat      : {m_0502.NameMedicine_0502}");
+                    Console.WriteLine($" Deskripsi Obat : {m_0502.DescMedicine_0502}");
+                    Console.WriteLine($" Kategori Obat  : {m_0502.CatMedicine_0502}");
+                    Console.WriteLine($" Harga Obat     : {m_0502.PriceMedicine_0502}");
+                    Console.WriteLine($" Stok Obat      : {m_0502.StockMedicine_0502}");
                     Console.WriteLine("=========================================");
                 }
             }

@@ -20,13 +20,13 @@ namespace pharmacyInventory
         public static void Main()
         {
             // Initiate Object from Service to Manage Data
-            MedicineService medicineService = new();
+            MedicineService medicineService_0502 = new();
 
             // Initiate for Looping Always run
-            bool systemRunning = true;
+            bool systemRunning_0502 = true;
 
             // Use Looping Avoid Crash or End System After Use Function Create Read Update Delete Until Stop the System
-            while (systemRunning)
+            while (systemRunning_0502)
             {
                 // Show Title and Main Menu
                 Console.Clear();
@@ -48,28 +48,28 @@ namespace pharmacyInventory
 
                 // Input Option Menu
                 Console.Write("Pilih Menu (1/2/3/4/5/6/7): ");
-                string inputChoose = Console.ReadLine() ?? "";
+                string inputChoose_0502 = Console.ReadLine() ?? "";
 
                 // Switch Case for Input Option
-                switch (inputChoose)
+                switch (inputChoose_0502)
                 {
                     case "1":
-                        MedicineControllers.CreateController(medicineService);
+                        MedicineControllers.CreateController(medicineService_0502);
                         break;
                     case "2":
-                        MedicineControllers.ReadController(medicineService);
+                        MedicineControllers.ReadController(medicineService_0502);
                         break;
                     case "3":
-                        MedicineControllers.UpdateController(medicineService);
+                        MedicineControllers.UpdateController(medicineService_0502);
                         break;
                     case "4":
-                        MedicineControllers.DeleteController(medicineService);
+                        MedicineControllers.DeleteController(medicineService_0502);
                         break;
                     case "5":
-                        MedicineControllers.SearchController(medicineService);
+                        MedicineControllers.SearchController(medicineService_0502);
                         break;
                     case "6":
-                        MedicineControllers.FilterController(medicineService);
+                        MedicineControllers.FilterController(medicineService_0502);
                         break;
                     case "7":
                         return;
