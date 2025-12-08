@@ -4,7 +4,6 @@ namespace pharmacyInventory.Service
 {
     class MedicineService
     {
-
         /* ===== Initiate Models Medicine Data to Array List ===== */
         private readonly List<MedicineModels> MedicineList = [];
 
@@ -32,7 +31,6 @@ namespace pharmacyInventory.Service
             int stockMedic
         )
         {
-
             MedicineModels medic_0502 = new()
             {
                 IdMedicine_0502 = AddIdMedicine_0502++,
@@ -43,18 +41,8 @@ namespace pharmacyInventory.Service
                 StockMedicine_0502 = stockMedic,
             };
 
-            // MedicineList.Add(medic_0502);
-            // return true;
-
-            try
-            {
-                MedicineList.Add(medic_0502);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            MedicineList.Add(medic_0502);
+            return true;
         }
 
         /* ===== Update Medicine Data Service ===== */
@@ -67,7 +55,7 @@ namespace pharmacyInventory.Service
             int stockMedic
         )
         {
-            var medicine_0502 = MedicineList.FirstOrDefault(medicine => medicine.IdMedicine_0502 == idMedic);
+            var medicine_0502 = GetById(idMedic);
             if (medicine_0502 != null)
             {
                 medicine_0502.NameMedicine_0502 = nameMedic;
@@ -81,13 +69,12 @@ namespace pharmacyInventory.Service
             {
                 return false;
             }
-
         }
 
         /* ===== Delete Medicine Data Service ===== */
         public bool DeleteService(int id)
         {
-            var medicine_0502 = MedicineList.FirstOrDefault(medicine => medicine.IdMedicine_0502 == id);
+            var medicine_0502 = GetById(id);
             if (medicine_0502 != null)
             {
                 MedicineList.Remove(medicine_0502);
@@ -105,14 +92,22 @@ namespace pharmacyInventory.Service
             keyword = keyword.ToLower();
 
             return MedicineList
-                .Where(medicine => medicine.NameMedicine_0502.ToLower().Contains(keyword))
+                .Where(medicine =>
+                    medicine
+                        .NameMedicine_0502.ToLower()
+                        .Contains(keyword, StringComparison.CurrentCultureIgnoreCase)
+                )
                 .ToList();
         }
 
         /* ===== Filter Medicine Data Service ===== */
         public List<MedicineModels> FilterService(string category)
         {
-            return MedicineList.Where(medicine => medicine.CatMedicine_0502.Equals(category, StringComparison.OrdinalIgnoreCase)).ToList();
+            return MedicineList
+                .Where(medicine =>
+                    medicine.CatMedicine_0502.Equals(category, StringComparison.OrdinalIgnoreCase)
+                )
+                .ToList();
         }
     }
 }

@@ -34,8 +34,10 @@ namespace pharmacyInventory.Controllers
 
             string input_0502 = Console.ReadLine() ?? "";
 
-            if (input_0502 == "1") return 1;
-            if (input_0502 == "2") return 2;
+            if (input_0502 == "1")
+                return 1;
+            if (input_0502 == "2")
+                return 2;
 
             Console.Clear();
             Console.WriteLine();
@@ -82,54 +84,6 @@ namespace pharmacyInventory.Controllers
             }
 
             Console.WriteLine();
-        }
-
-        // Controller for Read and Show All Medicine Data
-        public static void ReadController(MedicineService medicineService)
-        {
-            HeaderController("Lihat Data Semua Obat");
-            if (SubMenuController("Lihat Data Semua Obat") == 2)
-            {
-                return;
-            }
-            else
-            {
-                Console.Clear();
-            }
-
-            Console.WriteLine();
-
-            var list_0502 = medicineService.ReadService();
-
-            if (list_0502.Count == 0)
-            {
-                Console.WriteLine();
-                Console.WriteLine("==========================================");
-                Console.WriteLine("========== Tidak Ada Data Obat! ==========");
-                Console.WriteLine("==========================================");
-                Console.WriteLine();
-            }
-            else
-            {
-                Console.Clear();
-                Console.WriteLine("=========================================");
-                Console.WriteLine("===== Data Semua Obat di Inventory! =====");
-                Console.WriteLine("=========================================");
-                foreach (var m in list_0502)
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("=========================================");
-                    Console.WriteLine($" ID Obat        : {m.IdMedicine_0502}");
-                    Console.WriteLine($" Nama Obat      : {m.NameMedicine_0502}");
-                    Console.WriteLine($" Deskripsi Obat : {m.DescMedicine_0502}");
-                    Console.WriteLine($" Kategori Obat  : {m.CatMedicine_0502}");
-                    Console.WriteLine($" Harga Obat     : {m.PriceMedicine_0502}");
-                    Console.WriteLine($" Stok Obat      : {m.StockMedicine_0502}");
-                    Console.WriteLine("=========================================");
-                }
-            }
-
-            PauseController();
         }
 
         // Controller Create New Medicine Data
@@ -221,6 +175,55 @@ namespace pharmacyInventory.Controllers
             PauseController();
         }
 
+        // Controller for Read and Show All Medicine Data
+        public static void ReadController(MedicineService medicineService)
+        {
+            HeaderController("Lihat Data Semua Obat");
+            if (SubMenuController("Lihat Data Semua Obat") == 2)
+            {
+                return;
+            }
+            else
+            {
+                Console.Clear();
+            }
+
+            Console.WriteLine();
+
+            var list_0502 = medicineService.ReadService();
+
+            if (list_0502.Count == 0)
+            {
+                Console.WriteLine();
+                Console.WriteLine("==========================================");
+                Console.WriteLine("========== Tidak Ada Data Obat! ==========");
+                Console.WriteLine("==========================================");
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("=========================================");
+                Console.WriteLine("===== Data Semua Obat di Inventory! =====");
+                Console.WriteLine("=========================================");
+
+                foreach (var m in list_0502)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("=========================================");
+                    Console.WriteLine($" ID Obat        : {m.IdMedicine_0502}");
+                    Console.WriteLine($" Nama Obat      : {m.NameMedicine_0502}");
+                    Console.WriteLine($" Deskripsi Obat : {m.DescMedicine_0502}");
+                    Console.WriteLine($" Kategori Obat  : {m.CatMedicine_0502}");
+                    Console.WriteLine($" Harga Obat     : {m.PriceMedicine_0502}");
+                    Console.WriteLine($" Stok Obat      : {m.StockMedicine_0502}");
+                    Console.WriteLine("=========================================");
+                }
+            }
+
+            PauseController();
+        }
+
         // Controller Update Medicine Data (Select by ID)
         public static void UpdateController(MedicineService medicineService)
         {
@@ -267,15 +270,18 @@ namespace pharmacyInventory.Controllers
 
             Console.Write($"Nama Obat Baru ({medicine_0502.NameMedicine_0502}) : ");
             string nameInput_0502 = Console.ReadLine() ?? "";
-            if (nameInput_0502 != "") medicine_0502.NameMedicine_0502 = nameInput_0502;
+            if (nameInput_0502 != "")
+                medicine_0502.NameMedicine_0502 = nameInput_0502;
 
             Console.Write($"Deskripsi Baru ({medicine_0502.DescMedicine_0502}) : ");
             string descInput_0502 = Console.ReadLine() ?? "";
-            if (descInput_0502 != "") medicine_0502.DescMedicine_0502 = descInput_0502;
+            if (descInput_0502 != "")
+                medicine_0502.DescMedicine_0502 = descInput_0502;
 
             Console.Write($"Kategori Baru ({medicine_0502.CatMedicine_0502}) : ");
             string catInput_0502 = Console.ReadLine() ?? "";
-            if (catInput_0502 != "") medicine_0502.CatMedicine_0502 = catInput_0502;
+            if (catInput_0502 != "")
+                medicine_0502.CatMedicine_0502 = catInput_0502;
 
             Console.Write($"Harga Baru ({medicine_0502.PriceMedicine_0502}) : ");
             string priceUpdate_0502 = Console.ReadLine() ?? "";
@@ -288,13 +294,13 @@ namespace pharmacyInventory.Controllers
                 medicine_0502.StockMedicine_0502 = s;
 
             bool success_0502 = medicineService.UpdateService(
-                    id_0502,
-                    medicine_0502.NameMedicine_0502,
-                    medicine_0502.DescMedicine_0502,
-                    medicine_0502.CatMedicine_0502,
-                    medicine_0502.PriceMedicine_0502,
-                    medicine_0502.StockMedicine_0502
-                );
+                id_0502,
+                medicine_0502.NameMedicine_0502,
+                medicine_0502.DescMedicine_0502,
+                medicine_0502.CatMedicine_0502,
+                medicine_0502.PriceMedicine_0502,
+                medicine_0502.StockMedicine_0502
+            );
 
             if (!success_0502)
             {
@@ -450,7 +456,12 @@ namespace pharmacyInventory.Controllers
 
             foreach (var m_0502 in allMedicine_0502)
             {
-                if (m_0502.CatMedicine_0502.Equals(category_0502, StringComparison.OrdinalIgnoreCase))
+                if (
+                    m_0502.CatMedicine_0502.Equals(
+                        category_0502,
+                        StringComparison.OrdinalIgnoreCase
+                    )
+                )
                 {
                     results_0502.Add(m_0502);
                 }
