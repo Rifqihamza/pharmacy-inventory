@@ -1,6 +1,6 @@
 ﻿/* ========================================
 
-    Kelas: SI-25-0
+    Kelas: SI-25-05
     Kelompok: 02
     Anggota Kelompok:
     1. MUHAMMAD RIFQI HAMZA (102042500206)
