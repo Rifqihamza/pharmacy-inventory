@@ -28,3 +28,18 @@ C:\Users\ACER\Documents\pharmacy-inventory\obj\Debug\net9.0\refint\pharmacyInven
 C:\Users\ACER\Documents\pharmacy-inventory\obj\Debug\net9.0\pharmacyInventory.pdb
 C:\Users\ACER\Documents\pharmacy-inventory\obj\Debug\net9.0\pharmacyInventory.genruntimeconfig.cache
 C:\Users\ACER\Documents\pharmacy-inventory\obj\Debug\net9.0\ref\pharmacyInventory.dll
+C:\Users\Muhammad Nabil\Documents\tubes alpro\pharmacy-inventory\bin\Debug\net9.0\pharmacyInventory.exe
+C:\Users\Muhammad Nabil\Documents\tubes alpro\pharmacy-inventory\bin\Debug\net9.0\pharmacyInventory.deps.json
+C:\Users\Muhammad Nabil\Documents\tubes alpro\pharmacy-inventory\bin\Debug\net9.0\pharmacyInventory.runtimeconfig.json
+C:\Users\Muhammad Nabil\Documents\tubes alpro\pharmacy-inventory\bin\Debug\net9.0\pharmacyInventory.dll
+C:\Users\Muhammad Nabil\Documents\tubes alpro\pharmacy-inventory\bin\Debug\net9.0\pharmacyInventory.pdb
+C:\Users\Muhammad Nabil\Documents\tubes alpro\pharmacy-inventory\obj\Debug\net9.0\pharmacyInventory.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Muhammad Nabil\Documents\tubes alpro\pharmacy-inventory\obj\Debug\net9.0\pharmacyInventory.AssemblyInfoInputs.cache
+C:\Users\Muhammad Nabil\Documents\tubes alpro\pharmacy-inventory\obj\Debug\net9.0\pharmacyInventory.AssemblyInfo.cs
+C:\Users\Muhammad Nabil\Documents\tubes alpro\pharmacy-inventory\obj\Debug\net9.0\pharmacyInventory.csproj.CoreCompileInputs.cache
+C:\Users\Muhammad Nabil\Documents\tubes alpro\pharmacy-inventory\obj\Debug\net9.0\pharmacyInventory.sourcelink.json
+C:\Users\Muhammad Nabil\Documents\tubes alpro\pharmacy-inventory\obj\Debug\net9.0\pharmacyInventory.dll
+C:\Users\Muhammad Nabil\Documents\tubes alpro\pharmacy-inventory\obj\Debug\net9.0\refint\pharmacyInventory.dll
+C:\Users\Muhammad Nabil\Documents\tubes alpro\pharmacy-inventory\obj\Debug\net9.0\pharmacyInventory.pdb
+C:\Users\Muhammad Nabil\Documents\tubes alpro\pharmacy-inventory\obj\Debug\net9.0\pharmacyInventory.genruntimeconfig.cache
+C:\Users\Muhammad Nabil\Documents\tubes alpro\pharmacy-inventory\obj\Debug\net9.0\ref\pharmacyInventory.dll
