@@ -23,7 +23,7 @@ namespace pharmacyInventory.Service
         }
 
         /* ===== Create Medicine Data Service ===== */
-        public bool CreateService(
+        public void CreateService(
             string nameMedic,
             string descMedic,
             string catMedic,
@@ -31,22 +31,40 @@ namespace pharmacyInventory.Service
             int stockMedic
         )
         {
-            MedicineModels medic_0502 = new()
+            if (string.IsNullOrWhiteSpace(nameMedic))
+                throw new ArgumentException("Nama obat tidak boleh kosong");
+
+            if (nameMedic.Length < 2)
+                throw new ArgumentException("Nama obat minimal 2 karakter");
+
+            if (string.IsNullOrWhiteSpace(catMedic))
+                throw new ArgumentException("Kategori tidak boleh kosong");
+
+            string[] validCategories = { "OB", "OBT", "OK", "PS", "NA" };
+            if (!validCategories.Contains(catMedic.ToUpper()))
+                throw new ArgumentException("Kategori obat tidak valid");
+
+            if (priceMedic <= 0)
+                throw new ArgumentException("Harga harus lebih dari 0");
+
+            if (stockMedic <= 0)
+                throw new ArgumentException("Stok harus lebih dari 0");
+
+            MedicineModels medicine = new()
             {
                 IdMedicine_0502 = AddIdMedicine_0502++,
                 NameMedicine_0502 = nameMedic,
                 DescMedicine_0502 = descMedic,
-                CatMedicine_0502 = catMedic,
+                CatMedicine_0502 = catMedic.ToUpper(),
                 PriceMedicine_0502 = priceMedic,
                 StockMedicine_0502 = stockMedic,
             };
 
-            MedicineList.Add(medic_0502);
-            return true;
+            MedicineList.Add(medicine);
         }
 
         /* ===== Update Medicine Data Service ===== */
-        public bool UpdateService(
+        public void UpdateService(
             int idMedic,
             string nameMedic,
             string descMedic,
@@ -55,35 +73,30 @@ namespace pharmacyInventory.Service
             int stockMedic
         )
         {
-            var medicine_0502 = GetById(idMedic);
-            if (medicine_0502 != null)
-            {
-                medicine_0502.NameMedicine_0502 = nameMedic;
-                medicine_0502.DescMedicine_0502 = descMedic;
-                medicine_0502.CatMedicine_0502 = catMedic;
-                medicine_0502.PriceMedicine_0502 = priceMedic;
-                medicine_0502.StockMedicine_0502 = stockMedic;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            var medicine = GetById(idMedic) ?? throw new Exception("Data obat tidak ditemukan");
+
+            if (string.IsNullOrWhiteSpace(nameMedic))
+                throw new ArgumentException("Nama obat tidak boleh kosong");
+
+            if (priceMedic <= 0)
+                throw new ArgumentException("Harga harus lebih dari 0");
+
+            if (stockMedic <= 0)
+                throw new ArgumentException("Stok harus lebih dari 0");
+
+            medicine.NameMedicine_0502 = nameMedic;
+            medicine.DescMedicine_0502 = descMedic;
+            medicine.CatMedicine_0502 = catMedic;
+            medicine.PriceMedicine_0502 = priceMedic;
+            medicine.StockMedicine_0502 = stockMedic;
         }
 
         /* ===== Delete Medicine Data Service ===== */
-        public bool DeleteService(int id)
+        public void DeleteService(int id)
         {
-            var medicine_0502 = GetById(id);
-            if (medicine_0502 != null)
-            {
-                MedicineList.Remove(medicine_0502);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            var medicine = GetById(id) ?? throw new Exception("Data obat tidak ditemukan");
+
+            MedicineList.Remove(medicine);
         }
 
         /* ===== Search Medicine Data Service ===== */
