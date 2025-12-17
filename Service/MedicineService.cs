@@ -4,26 +4,27 @@ namespace pharmacyInventory.Service
 {
     class MedicineService
     {
-        /* ===== Initiate Models Medicine Data to Array List ===== */
+        /* ===== Inisiasi Data dari Models ke Array List ===== */
         private readonly List<MedicineModels> MedicineList = [];
 
-        /* ===== Initiate Type Data for Add +1 ID (Auto Increment) ===== */
+        /* ===== Inisiasi tipe data untuk id agar mengawali dari 1 hingga seterusnya (Auto Increment) ===== */
         int AddIdMedicine_0502 = 1;
 
-        /* ===== Get Data by ID ===== */
+        /* ===== Service Untuk Ambil Data dari Models Berdasarkan ID ===== */
         public MedicineModels? GetById(int id)
         {
             return MedicineList.FirstOrDefault(medicine => medicine.IdMedicine_0502 == id);
         }
 
-        /* ===== Read Medicine Data Service ===== */
+        /* ===== Service untuk Membaca Data Obat dari List Obat ===== */
         public List<MedicineModels> ReadService()
         {
             return MedicineList;
         }
 
-        /* ===== Create Medicine Data Service ===== */
+        /* ===== Service untuk Membuat Data Obat Baru ===== */
         public void CreateService(
+            // Parameter sesuai data dari Models
             string nameMedic,
             string descMedic,
             string catMedic,
@@ -31,6 +32,14 @@ namespace pharmacyInventory.Service
             int stockMedic
         )
         {
+            // Validasi Service Apakah OK untuk di Insert ke Database atau Memory System
+            if (
+                MedicineList.Any(m =>
+                    m.NameMedicine_0502.Equals(nameMedic, StringComparison.OrdinalIgnoreCase)
+                )
+            )
+                throw new Exception("Data Obat Sudah Tersedia!");
+
             if (string.IsNullOrWhiteSpace(nameMedic))
                 throw new ArgumentException("Nama obat tidak boleh kosong");
 

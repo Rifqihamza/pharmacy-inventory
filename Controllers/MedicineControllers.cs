@@ -59,6 +59,7 @@ namespace pharmacyInventory.Controllers
 
             if (list_0502.Count == 0)
             {
+                Console.Clear();
                 Console.WriteLine();
                 Console.WriteLine("==================================================");
                 Console.WriteLine("============== Tidak Ada Data Obat! ==============");
@@ -82,8 +83,6 @@ namespace pharmacyInventory.Controllers
                     Console.WriteLine("=========================================");
                 }
             }
-
-            Console.WriteLine();
         }
 
         // Function Controller Untuk Membuat atau Menambah Data Obat Baru
@@ -127,6 +126,7 @@ namespace pharmacyInventory.Controllers
             string[] validCategories = ["OB", "OBT", "OK", "PS", "NA"];
             if (!validCategories.Contains(cat_0502.ToUpper()))
             {
+                Console.Clear();
                 Console.WriteLine("========== Kategori Harus Sesuai Pilihan! =========");
                 PauseController();
                 return;
@@ -134,6 +134,7 @@ namespace pharmacyInventory.Controllers
 
             if (cat_0502 == "")
             {
+                Console.Clear();
                 Console.WriteLine("========== Kategori Tidak Boleh Kosong! =========");
                 PauseController();
                 return;
@@ -144,6 +145,7 @@ namespace pharmacyInventory.Controllers
 
             if (string.IsNullOrWhiteSpace(priceInput))
             {
+                Console.Clear();
                 Console.WriteLine("============ Harga Tidak Boleh Kosong! ============");
                 PauseController();
                 return;
@@ -151,6 +153,7 @@ namespace pharmacyInventory.Controllers
 
             if (!int.TryParse(priceInput, out int price))
             {
+                Console.Clear();
                 Console.WriteLine("============ Harga Harus Angka Valid! ============");
                 PauseController();
                 return;
@@ -158,6 +161,7 @@ namespace pharmacyInventory.Controllers
 
             if (price <= 0)
             {
+                Console.Clear();
                 Console.WriteLine("============ Harga Harus Lebih Dari 0! ============");
                 PauseController();
                 return;
@@ -168,6 +172,7 @@ namespace pharmacyInventory.Controllers
 
             if (string.IsNullOrWhiteSpace(stockInput))
             {
+                Console.Clear();
                 Console.WriteLine("============ Stok Tidak Boleh Kosong! ============");
                 PauseController();
                 return;
@@ -175,6 +180,7 @@ namespace pharmacyInventory.Controllers
 
             if (!int.TryParse(stockInput, out int stock))
             {
+                Console.Clear();
                 Console.WriteLine("============ Stok Harus Angka Valid! ============");
                 PauseController();
                 return;
@@ -182,6 +188,7 @@ namespace pharmacyInventory.Controllers
 
             if (stock <= 0)
             {
+                Console.Clear();
                 Console.WriteLine("============ Stok Harus Lebih Dari 0! ============");
                 PauseController();
                 return;
@@ -203,15 +210,15 @@ namespace pharmacyInventory.Controllers
                 Console.WriteLine($" Stok Obat      : {stock}");
                 Console.WriteLine();
                 Console.WriteLine("==========================================");
-
-                PauseController();
             }
             catch (ArgumentException ex)
             {
+                Console.Clear();
                 Console.WriteLine($"Validasi gagal: {ex.Message}");
             }
             catch (Exception ex)
             {
+                Console.Clear();
                 Console.WriteLine($"Error: {ex.Message}");
             }
 
@@ -283,6 +290,7 @@ namespace pharmacyInventory.Controllers
             string idInput_0502 = Console.ReadLine() ?? "";
             if (!int.TryParse(idInput_0502, out int id_0502))
             {
+                Console.Clear();
                 Console.WriteLine("=========== ID Obat Harus Angka Valid! ===========");
                 PauseController();
                 return;
@@ -290,6 +298,7 @@ namespace pharmacyInventory.Controllers
 
             if (id_0502 < 0)
             {
+                Console.Clear();
                 Console.WriteLine("=========== ID Obat Tidak Boleh Kosong! ===========");
                 PauseController();
                 return;
@@ -299,6 +308,7 @@ namespace pharmacyInventory.Controllers
 
             if (medicine_0502 == null)
             {
+                Console.Clear();
                 Console.WriteLine("=========== Data Obat Tidak Ditemukan! ===========");
                 PauseController();
                 return;
@@ -326,16 +336,20 @@ namespace pharmacyInventory.Controllers
             {
                 if (!int.TryParse(newPriceInput_0502, out int newPrice_0502))
                 {
+                    Console.Clear();
                     Console.WriteLine("=========== Harga Obat Harus Angka Valid! ===========");
                     PauseController();
+                    return;
                 }
 
                 if (newPrice_0502 < 0)
                 {
+                    Console.Clear();
                     Console.WriteLine(
                         "=========== Harga Tidak Boleh Kurang Dari 0! =============="
                     );
                     PauseController();
+                    return;
                 }
 
                 medicine_0502.PriceMedicine_0502 = newPrice_0502;
@@ -348,14 +362,18 @@ namespace pharmacyInventory.Controllers
             {
                 if (!int.TryParse(newStockInput_0502, out int newStock_0502))
                 {
+                    Console.Clear();
                     Console.WriteLine("=========== Stok Obat Harus Angka Valid! ===========");
                     PauseController();
+                    return;
                 }
 
                 if (newStock_0502 <= 0)
                 {
+                    Console.Clear();
                     Console.WriteLine("=========== Stok Harus Lebih Dari 0! ===============");
                     PauseController();
+                    return;
                 }
 
                 medicine_0502.StockMedicine_0502 = newStock_0502;
@@ -388,17 +406,19 @@ namespace pharmacyInventory.Controllers
             }
             catch (ArgumentException ex)
             {
+                Console.Clear();
                 Console.WriteLine($"Validasi gagal: {ex.Message}");
             }
             catch (Exception ex)
             {
+                Console.Clear();
                 Console.WriteLine($"Error: {ex.Message}");
             }
 
             PauseController();
         }
 
-        // Controller Delete Medicine Data (Select by ID)
+        // Function Controller untuk Menghapus Data Obat Berdasarkan ID
         public static void DeleteController(MedicineService medicineService)
         {
             HeaderController("Hapus Data Obat");
@@ -419,30 +439,36 @@ namespace pharmacyInventory.Controllers
 
             if (!int.TryParse(idInput_0502, out int id_0502))
             {
+                Console.Clear();
                 Console.WriteLine("=========== ID Obat Harus Angka Valid! ===========");
                 PauseController();
+                return;
             }
 
             if (id_0502 <= 0)
             {
+                Console.Clear();
                 Console.WriteLine("=========== ID Obat Tidak Boleh Kosong! ===========");
                 PauseController();
+                return;
             }
 
             try
             {
                 medicineService.DeleteService(id_0502);
-                Console.WriteLine("Data obat berhasil dihapus!");
+                Console.Clear();
+                Console.WriteLine("========== Data obat berhasil dihapus! ==========");
             }
             catch (Exception ex)
             {
+                Console.Clear();
                 Console.WriteLine(ex.Message);
             }
 
             PauseController();
         }
 
-        // Controller Search Medicine Data (Select by Name Medicine)
+        // Function Controller untuk Mencari Data Obat Berdasarkan Kata Kunci atau Nama Obat
         public static void SearchController(MedicineService medicineService)
         {
             HeaderController("Cari Data Obat");
@@ -463,16 +489,16 @@ namespace pharmacyInventory.Controllers
 
             var results_0502 = medicineService.SearchService(name_0502);
 
-            Console.Clear();
-
             if (results_0502.Count == 0)
             {
+                Console.Clear();
                 Console.WriteLine("======= Data obat tidak ditemukan! =======");
             }
             else
             {
                 foreach (var m_0502 in results_0502)
                 {
+                    Console.Clear();
                     Console.WriteLine();
                     Console.WriteLine("=========================================");
                     Console.WriteLine("===== Berhasil menemukan data obat! =====");
@@ -490,7 +516,7 @@ namespace pharmacyInventory.Controllers
             PauseController();
         }
 
-        // Controller Filter Medicine Data (Select by Category)
+        // Function Controller untuk Filter Data Obat Berdasarkan Kategori Obat
         public static void FilterController(MedicineService medicineService)
         {
             HeaderController("Filter Data Obat");

@@ -19,18 +19,23 @@ namespace pharmacyInventory
     {
         public static void Main()
         {
-            // Initiate Object from Service to Manage Data
+            // Inisiasi Membuat Objek Yang Memanggil MedicineService
             MedicineService medicineService_0502 = new();
 
-            // Initiate for Looping Always run
+            // Inisiasi Variabel Untuk Membuat Looping Selalu Pada Kondisi benar Saat Program Berjalan
             bool systemRunning_0502 = true;
 
-            // Use Looping Avoid Crash or End System After Use Function Create Read Update Delete Until Stop the System
+            /*
+            Menggunakan While Loop untuk Menghindari Crash atau Sistem Berakhir
+            Saat Menggunakan Function CRUD, Search, Filter Sampai Sistem Berhenti
+            */
+
             while (systemRunning_0502)
             {
+                // Menggunakan Metode Try Catch Untuk Coba Menjalankan Sistem
                 try
                 {
-                    // Show Title and Main Menu
+                    // Memunculkan Menu Utama
                     Console.Clear();
                     Console.WriteLine("==============================================");
                     Console.WriteLine("========== Selamat Datang di Sistem ==========");
@@ -48,11 +53,11 @@ namespace pharmacyInventory
                     Console.WriteLine("----------------------------------------------");
                     Console.WriteLine();
 
-                    // Input Option Menu
+                    // Input untuk Pilih Opsi Menu
                     Console.Write("Pilih Menu (1/2/3/4/5/6/7): ");
                     string inputChoose_0502 = Console.ReadLine() ?? "";
 
-                    // Switch Case for Input Option
+                    // Switch Case Untuk Menjalankan Function Sesuai Opsi Dari Input
                     switch (inputChoose_0502)
                     {
                         case "1":
@@ -86,6 +91,7 @@ namespace pharmacyInventory
                             break;
                     }
                 }
+                // Menangkap Exception Error Ketika Sistem Gagal Dijalankan
                 catch (Exception ex)
                 {
                     Console.WriteLine("Error: " + ex);

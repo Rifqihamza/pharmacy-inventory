@@ -2,7 +2,10 @@ namespace pharmacyInventory.Models
 {
     class MedicineModels
     {
-        // Initiate Models Medicine Data
+        /*
+        Menginisiasi Model Data yang Isinya Berupa Informasi data obat
+        Dan Model ini akan digunakan untuk Menyimpan dan Mengelola data obat
+        */
         public int IdMedicine_0502 { get; set; }
         public string NameMedicine_0502 { get; set; } = "";
         public string DescMedicine_0502 { get; set; } = "";
