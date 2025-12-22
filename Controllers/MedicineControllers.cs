@@ -53,9 +53,21 @@ namespace pharmacyInventory.Controllers
        */
         private static void ReadInlineController(MedicineService medicineService)
         {
+            /* Memunculkan Element Header pada setiap menu di console */
             HeaderController("Data Semua Obat");
 
+            /*
+            Membuat variabel baru dengan tipe data var
+            agar tipe data di tentukan oleh compiler
+            */
+
             var list_0502 = medicineService.ReadService();
+
+            /*
+            Pengecekan untuk list jika tidak ada data maka akan menampilkan pesan tidak ada obat
+            Jika terdapat obat maka langsung merender data menggunakan foreach yang diambil dari
+            variabel list_0502
+            */
 
             if (list_0502.Count == 0)
             {
@@ -228,7 +240,16 @@ namespace pharmacyInventory.Controllers
         // Function Controller Untuk Membaca atau Mengambil Data Obat Yang Tersedia
         public static void ReadController(MedicineService medicineService)
         {
+            /* Memunculkan Element Header pada setiap menu di console */
             HeaderController("Lihat Data Semua Obat");
+
+            /*
+            Pengecekan pada saat Sub Menu Muncul
+            Jika user menginput angka 2 maka akan kembali ke menu utama
+            Tapi jika input selain 2 atau input angka 1, maka akan lanjut ke
+            menu selanjutnya
+             */
+
             if (SubMenuController("Lihat Data Semua Obat") == 2)
             {
                 return;
@@ -240,8 +261,18 @@ namespace pharmacyInventory.Controllers
 
             Console.WriteLine();
 
+            /*
+            Membuat variabel baru dengan tipe data var
+            agar tipe data di tentukan oleh compiler
+            */
+
             var list_0502 = medicineService.ReadService();
 
+            /*
+            Pengecekan untuk list jika tidak ada data maka akan menampilkan pesan tidak ada obat
+            Jika terdapat obat maka langsung merender data menggunakan foreach yang diambil dari
+            variabel list_0502
+            */
             if (list_0502.Count == 0)
             {
                 Console.WriteLine("========== Tidak Ada Data Obat! ==========");
@@ -266,15 +297,22 @@ namespace pharmacyInventory.Controllers
                     Console.WriteLine("=========================================");
                 }
             }
-
+            // Memunculkan method pause untuk user melihat data terlebih dahulu sebelum lanjut
             PauseController();
         }
 
         // Function Controller Untuk Ubah Data Obat Berdasarkan ID
         public static void UpdateController(MedicineService medicineService)
         {
+            /* Memunculkan Element Header pada setiap menu di console */
             HeaderController("Ubah Data Obat");
 
+            /*
+            Pengecekan pada saat Sub Menu Muncul
+            Jika user menginput angka 2 maka akan kembali ke menu utama
+            Tapi jika input selain 2 atau input angka 1, maka akan lanjut ke
+            menu selanjutnya
+             */
             if (SubMenuController("Ubah Data Obat") == 2)
             {
                 return;
@@ -284,10 +322,20 @@ namespace pharmacyInventory.Controllers
                 Console.Clear();
             }
 
+            /*
+            Memanggil method ReadInlineController untuk memunculkan data obat
+            Ini membantu user agar tidak kebingungan saat ingin update data
+            */
+
             ReadInlineController(medicineService);
 
+            // Input untuk memilih data obat berdasarkan ID
             Console.Write("Masukkan ID Obat yang ingin diubah: ");
             string idInput_0502 = Console.ReadLine() ?? "";
+
+            // Kondisi untuk mencoba untuk parsing ID dari string ke integer
+
+            // Jika data input tidak bisa di ubah atau di parsing maka akan muncul error,
             if (!int.TryParse(idInput_0502, out int id_0502))
             {
                 Console.Clear();
@@ -295,7 +343,7 @@ namespace pharmacyInventory.Controllers
                 PauseController();
                 return;
             }
-
+            // Pengecekan jika angka input ID kurang dari 0, maka error ID obat tidak boleh 0
             if (id_0502 < 0)
             {
                 Console.Clear();
@@ -304,8 +352,10 @@ namespace pharmacyInventory.Controllers
                 return;
             }
 
+            // Menginisiasi variabel medicine untuk mengambil data berdasarkan ID dari method service GetById
             var medicine_0502 = medicineService.GetById(id_0502);
 
+            // Jika ID obat dari variabel tersebut tidak ada, maka data obat tidak ditemukan
             if (medicine_0502 == null)
             {
                 Console.Clear();
@@ -332,8 +382,10 @@ namespace pharmacyInventory.Controllers
             Console.Write($"Harga Baru ({medicine_0502.PriceMedicine_0502}) : ");
             string newPriceInput_0502 = Console.ReadLine() ?? "";
 
+            // Pengecekan untuk input harga, jika harga yang di input tidak di isi, maka data tidak berubah dan tetap data sebelumnya
             if (!string.IsNullOrWhiteSpace(newPriceInput_0502))
             {
+                // Setelah pengecekan input kosong, dilakukan pengecekan untuk coba di parsing dari string ke integer
                 if (!int.TryParse(newPriceInput_0502, out int newPrice_0502))
                 {
                     Console.Clear();
@@ -342,6 +394,7 @@ namespace pharmacyInventory.Controllers
                     return;
                 }
 
+                // Pengecekan untuk data harga yang di input kurang dari 0, maka akan menampilkan error
                 if (newPrice_0502 < 0)
                 {
                     Console.Clear();
@@ -355,6 +408,7 @@ namespace pharmacyInventory.Controllers
                 medicine_0502.PriceMedicine_0502 = newPrice_0502;
             }
 
+            // Pengecekan untuk stok sama seperti harga
             Console.Write($"Stok Baru ({medicine_0502.StockMedicine_0502}) : ");
             string newStockInput_0502 = Console.ReadLine() ?? "";
 
@@ -379,6 +433,11 @@ namespace pharmacyInventory.Controllers
                 medicine_0502.StockMedicine_0502 = newStock_0502;
             }
 
+            /*
+            Jika sudah selesai input, maka akan lanjut untuk mencoba memasukkan data
+            disini memanggil service untuk melakukan validasi data dari input dan masuk ke
+            memori sistem
+            */
             try
             {
                 medicineService.UpdateService(
@@ -389,7 +448,7 @@ namespace pharmacyInventory.Controllers
                     medicine_0502.PriceMedicine_0502,
                     medicine_0502.StockMedicine_0502
                 );
-
+                // Ketika pengecekan sudah berhasil maka akan memunculkan pesan berhasil dan terlihat list data obat baru
                 Console.Clear();
                 Console.WriteLine("==========================================");
                 Console.WriteLine("===== Data obat berhasil diperbarui! =====");
@@ -404,6 +463,7 @@ namespace pharmacyInventory.Controllers
                 Console.WriteLine();
                 Console.WriteLine("==========================================");
             }
+            // Menangkap error ketika terdapat kegagalan validasi data ke memory
             catch (ArgumentException ex)
             {
                 Console.Clear();
