@@ -53,11 +53,11 @@ namespace pharmacyInventory.Service
             if (!validCategories.Contains(catMedic.ToUpper()))
                 throw new ArgumentException("Kategori obat tidak valid");
 
-            if (priceMedic <= 0)
-                throw new ArgumentException("Harga harus lebih dari 0");
+            if (priceMedic < 0)
+                throw new ArgumentException("Harga tidak boleh kurang dari 0");
 
-            if (stockMedic <= 0)
-                throw new ArgumentException("Stok harus lebih dari 0");
+            if (stockMedic < 0)
+                throw new ArgumentException("Stok tidak boleh kurang dari 0");
 
             MedicineModels medicine = new()
             {
@@ -87,11 +87,11 @@ namespace pharmacyInventory.Service
             if (string.IsNullOrWhiteSpace(nameMedic))
                 throw new ArgumentException("Nama obat tidak boleh kosong");
 
-            if (priceMedic <= 0)
-                throw new ArgumentException("Harga harus lebih dari 0");
+            if (priceMedic < 0)
+                throw new ArgumentException("Harga tidak boleh kurang dari 0");
 
-            if (stockMedic <= 0)
-                throw new ArgumentException("Stok harus lebih dari 0");
+            if (stockMedic < 0)
+                throw new ArgumentException("Stok tidak boleh kurang dari 0");
 
             medicine.NameMedicine_0502 = nameMedic;
             medicine.DescMedicine_0502 = descMedic;

@@ -159,7 +159,7 @@ namespace pharmacyInventory.Controllers
                 return;
             }
 
-            if (price <= 0)
+            if (price < 0)
             {
                 Console.Clear();
                 Console.WriteLine("============ Harga Harus Lebih Dari 0! ============");
@@ -186,7 +186,7 @@ namespace pharmacyInventory.Controllers
                 return;
             }
 
-            if (stock <= 0)
+            if (stock < 0)
             {
                 Console.Clear();
                 Console.WriteLine("============ Stok Harus Lebih Dari 0! ============");
@@ -368,7 +368,7 @@ namespace pharmacyInventory.Controllers
                     return;
                 }
 
-                if (newStock_0502 <= 0)
+                if (newStock_0502 < 0)
                 {
                     Console.Clear();
                     Console.WriteLine("=========== Stok Harus Lebih Dari 0! ===============");
@@ -385,7 +385,7 @@ namespace pharmacyInventory.Controllers
                     id_0502,
                     medicine_0502.NameMedicine_0502,
                     medicine_0502.DescMedicine_0502,
-                    medicine_0502.CatMedicine_0502,
+                    medicine_0502.CatMedicine_0502.ToUpper(),
                     medicine_0502.PriceMedicine_0502,
                     medicine_0502.StockMedicine_0502
                 );

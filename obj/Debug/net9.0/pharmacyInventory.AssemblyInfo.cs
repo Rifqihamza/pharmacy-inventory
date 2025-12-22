@@ -13,7 +13,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("pharmacyInventory")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7724804779910a28ea1e7a0c42b4552daee073a6")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+91fcccbb64190afe250f15c578176f153ba9290c")]
+>>>>>>> 1422cc8 (Fix: Update Logic Price and Stock Check)
 [assembly: System.Reflection.AssemblyProductAttribute("pharmacyInventory")]
 [assembly: System.Reflection.AssemblyTitleAttribute("pharmacyInventory")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
